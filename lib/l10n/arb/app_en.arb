@@ -1,0 +1,6 @@
+{
+    "helloWorld": "Hello World!",
+     "somethingWentWrong":"Something went wrong",
+     "sorryCantProcessDescription":"Sorry, we can't process your request at the moment,\nPlease try again later.",
+     "skip":"Skip"
+ }

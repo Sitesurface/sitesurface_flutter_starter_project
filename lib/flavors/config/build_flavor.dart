@@ -1,0 +1,1 @@
+enum BuildFlavor { dev, prod }

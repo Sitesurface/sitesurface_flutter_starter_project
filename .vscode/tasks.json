@@ -1,0 +1,42 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "flutter",
+			"command": "flutter",
+			"args": [
+				"pub",
+				"run",
+				"build_runner",
+				"watch",
+				"--delete-conflicting-outputs"
+			],
+			"problemMatcher": [
+				"$dart-build_runner"
+			],
+			"group": "build",
+			"label": "Freezed",
+			"detail": "generate freezed files",
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		},
+		{
+			"type": "flutter",
+			"command": "flutter",
+			"args": [
+				"gen-l10n"
+			],
+			"problemMatcher": [],
+			"label": "Internalisation",
+			"detail": "generate localisation files",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		}
+	]
+}
