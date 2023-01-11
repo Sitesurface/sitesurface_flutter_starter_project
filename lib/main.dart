@@ -3,7 +3,6 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cache/shared_preferences.dart';
 import 'flavors/config/flavor_config.dart';
 import 'l10n/provider/locale_notifier.dart';
@@ -47,30 +46,27 @@ class MyApp extends StatelessWidget {
             valueListenable: ThemeNotifier.themeNotifier,
             builder: (context, theme, child) {
               return InternetHandler(
-                child: MultiBlocProvider(
-                  providers: const [],
-                  child: MaterialApp(
-                    navigatorKey: navigatorKey,
-                    debugShowCheckedModeBanner: false,
-                    title: FlavorConfig.instance.appName ?? "",
-                    builder: BotToastInit(),
-                    navigatorObservers: [
-                      BotToastNavigatorObserver(),
-                    ],
-                    scrollBehavior: const ScrollBehavior(
-                        // ignore: deprecated_member_use
-                        androidOverscrollIndicator:
-                            AndroidOverscrollIndicator.stretch),
-                    localizationsDelegates:
-                        AppLocalizations.localizationsDelegates,
-                    supportedLocales: AppLocalizations.supportedLocales,
-                    locale: locale.getLocaleMode(),
-                    theme: lightTheme,
-                    darkTheme: darkTheme,
-                    themeMode: theme.getThemeMode(),
-                    onGenerateRoute: RouteHelper.generateRoute,
-                    initialRoute: SplashScreen.id,
-                  ),
+                child: MaterialApp(
+                  navigatorKey: navigatorKey,
+                  debugShowCheckedModeBanner: false,
+                  title: FlavorConfig.instance.appName ?? "",
+                  builder: BotToastInit(),
+                  navigatorObservers: [
+                    BotToastNavigatorObserver(),
+                  ],
+                  scrollBehavior: const ScrollBehavior(
+                      // ignore: deprecated_member_use
+                      androidOverscrollIndicator:
+                          AndroidOverscrollIndicator.stretch),
+                  localizationsDelegates:
+                      AppLocalizations.localizationsDelegates,
+                  supportedLocales: AppLocalizations.supportedLocales,
+                  locale: locale.getLocaleMode(),
+                  theme: lightTheme,
+                  darkTheme: darkTheme,
+                  themeMode: theme.getThemeMode(),
+                  onGenerateRoute: RouteHelper.generateRoute,
+                  initialRoute: SplashScreen.id,
                 ),
               );
             },

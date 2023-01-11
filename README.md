@@ -11,8 +11,16 @@
     Generate asset constants file by running script in tools/gen-assets.sh
 
 ### App Name and application id
-    Change app name and application id from android/app/build.gradle
     //TODO : Add script 
+#### Android
+    Change app name and application id from android/app/build.gradle
+
+#### iOS
+    Change app name and bundle id in ios/flutter/*
+    Debug-dev.xcconfig -> Add dev configuration
+    Release-dev.xcconfig -> Add dev configuration
+    Debug-prod.xcconfig -> Add prod configuration
+    Release-prod.xcconfig -> Add prod configuration
 
 ### Add Facebook Client token and id
     Change your facebook keys in /android/app/src/main/res/values/strings.xml
