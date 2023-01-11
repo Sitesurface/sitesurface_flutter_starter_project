@@ -1,6 +1,6 @@
 #include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
 #include "Generated.xcconfig"
 
-PRODUCT_BUNDLE_IDENTIFIER=com.sitesurface.flutter_starter.dev
+PRODUCT_BUNDLE_IDENTIFIER=com.sitesurface.starter.dev
 CFBundleDisplayName=Dev Sitesurface
 FLUTTER_TARGET=/Users/san/Development/Projects/flutter/sitesurface/sitesurface_flutter_starter_project/lib/flavors/dev.dart
