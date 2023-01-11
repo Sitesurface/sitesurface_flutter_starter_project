@@ -28,22 +28,21 @@ class FlavorConfig {
       case BuildFlavor.dev:
         {
           buildFlavor = BuildFlavor.dev;
-          baseUrl = 'https://ad44-122-161-79-246.in.ngrok.io';
-          appName = "Dev Starter Project";
-          packageName = 'com.help1.mobile.dev';
-          dynamicLink = 'https://help1dev.page.link';
+          baseUrl = '';
+          appName = "Dev Sitesurface";
+          packageName = 'com.sitesurface.starter.dev';
+          dynamicLink = '';
           appStoreId = '';
-          fcmKey =
-              "AAAA7-KgYlA:APA91bFaDu_WsZT1pCDBf9bSPoeq61MqXZEY4V-u05GCTzsomgzRNPE7rnXK6JFa8yZO5E0ZAOnROzzDKgTz4vUemvkW3Fcs-Dt3MgBOlcwGJbxP8fnsDbxE6FaGtRus3uJCA14dpBOw";
+          fcmKey = "";
         }
         break;
       case BuildFlavor.prod:
         {
-          buildFlavor = BuildFlavor.prod;
+          buildFlavor = BuildFlavor.dev;
           baseUrl = '';
-          appName = "Help1";
-          packageName = 'com.help1.mobile';
-          dynamicLink = 'https://help1dev.page.link';
+          appName = "Sitesurface";
+          packageName = 'com.sitesurface.starter';
+          dynamicLink = '';
           appStoreId = '';
           fcmKey = "";
         }
