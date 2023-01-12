@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../colors/pallet.dart';
 import 'themes/app_bar_theme.dart';
+import 'themes/text_theme.dart';
 
 ThemeData lightTheme = ThemeData(
   primaryColor: Pallet.primary,
@@ -17,5 +18,6 @@ ThemeData lightTheme = ThemeData(
       ),
     ),
   ),
+  textTheme: lightTextTheme,
   appBarTheme: lightAppBarTheme,
 );

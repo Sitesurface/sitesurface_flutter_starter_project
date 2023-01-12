@@ -34,4 +34,10 @@
            android:name="com.facebook.sdk.ClientToken" 
            android:value="@string/facebook_client_token"/>
 ```
+### Firebase setup
+    change variable values in tools/flutterfire_config.sh
+
+### Change TextTheme Fonts
+    change your textTheme font by changing the fontstyle in lib/util/styles/theme/themes/text_theme.dart
+
 ### 

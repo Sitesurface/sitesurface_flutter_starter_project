@@ -1,6 +1,34 @@
+#!/bin/bash
 
-echo "Configuring FlutterFire for iOS and Android for dev environment"
-flutterfire configure --token=1//0gvjzj4Mv9hYTCgYIARAAGBASNwF-L9IrumHbJpbStUKyo6e_JbcbirEmNZcP-FGZ31h5kq8pXFU0KHcDqMeNJif0bYN0dHkmiF8 --project=sitesurface-flutter-starter --platform=ios,android --android-package-name=com.sitesurface.starter.dev --ios-bundle-id=com.sitesurface.starter.dev 
+# Delete the existing firebase_options_dev.dart,  firebase_options_prod.dart files, firebase_app_id.json file and google-services.json file
+echo "Deleting existing firebase configuration files"
+rm lib/flavors/config/firebase/firebase_options_dev.dart
+rm lib/flavors/config/firebase/firebase_options_prod.dart
+rm ios/config/dev/firebase_app_id_file.json
+rm ios/config/prod/firebase_app_id_file.json
+rm android/app/src/dev/google-services.json
+rm android/app/src/prod/google-services.json
+rm ios/config/dev/GoogleService-Info.plist
+rm ios/config/prod/GoogleService-Info.plist
 
+configure_flutter_fire() {
+    local environment=$1
+    local out_file=$2
+    local package_name=$3
+    local bundle_id=$4
+    
+    echo "Configuring FlutterFire for iOS and Android for $environment environment"
+    flutterfire configure --project=sitesurface-flutter-starter --platforms=ios,android --android-package-name=$package_name --ios-bundle-id=$bundle_id --yes --out=$out_file
+    flutter pub run build_runner build --delete-conflicting-outputs
+    
+    echo "Moving generated google-services.json to android/app/src/$environment"
+    mv android/app/google-services.json android/app/src/$environment/google-services.json
+    echo "Moving generated GoogleService-Info.plist ios/config/$environment"
+    mv ios/Runner/GoogleService-Info.plist ios/config/$environment/GoogleService-Info.plist
+    echo "Moving generated firebase_app_id_file.json from ios to ios/config/$environment"
+    mv ios/firebase_app_id_file.json ios/config/$environment/firebase_app_id_file.json
+    echo "----------$environment Configuration done ----------"
+}
 
-echo "Configuring FlutterFire for iOS and Android for prod environment"
+configure_flutter_fire "dev" "lib/flavors/config/firebase/firebase_options_dev.dart" "com.sitesurface.starter.dev" "com.sitesurface.starter.dev"
+configure_flutter_fire "prod" "lib/flavors/config/firebase/firebase_options_prod.dart" "com.sitesurface.starter" "com.sitesurface.starter"
