@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 # Delete the existing firebase_options_dev.dart,  firebase_options_prod.dart files, firebase_app_id.json file and google-services.json file
 echo "Deleting existing firebase configuration files"
 rm lib/flavors/config/firebase/firebase_options_dev.dart
@@ -16,11 +18,14 @@ configure_flutter_fire() {
     local out_file=$2
     local package_name=$3
     local bundle_id=$4
+    local class_name=$5
     
     echo "Configuring FlutterFire for iOS and Android for $environment environment"
     flutterfire configure --project=sitesurface-flutter-starter --platforms=ios,android --android-package-name=$package_name --ios-bundle-id=$bundle_id --yes --out=$out_file
     flutter pub run build_runner build --delete-conflicting-outputs
     
+    echo "Renaming class DefaultFirebaseOptions to $class_name in $out_file"
+    sed -i "s/DefaultFirebaseOptions/$class_name/g" $out_file    
     echo "Moving generated google-services.json to android/app/src/$environment"
     mv android/app/google-services.json android/app/src/$environment/google-services.json
     echo "Moving generated GoogleService-Info.plist ios/config/$environment"
@@ -30,5 +35,5 @@ configure_flutter_fire() {
     echo "----------$environment Configuration done ----------"
 }
 
-configure_flutter_fire "dev" "lib/flavors/config/firebase/firebase_options_dev.dart" "com.sitesurface.starter.dev" "com.sitesurface.starter.dev"
-configure_flutter_fire "prod" "lib/flavors/config/firebase/firebase_options_prod.dart" "com.sitesurface.starter" "com.sitesurface.starter"
+configure_flutter_fire "dev" "lib/flavors/config/firebase/firebase_options_dev.dart" "com.sitesurface.starter.dev" "com.sitesurface.starter.dev" "DevDefaultFirebaseOptions"
+configure_flutter_fire "prod" "lib/flavors/config/firebase/firebase_options_prod.dart" "com.sitesurface.starter" "com.sitesurface.starter" "ProdDefaultFirebaseOptions"

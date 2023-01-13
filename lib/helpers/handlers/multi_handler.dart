@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/helpers/handlers/internet_handler.dart';
-import 'package:sitesurface_flutter_starter_project/helpers/handlers/locale_handler.dart';
-import 'package:sitesurface_flutter_starter_project/helpers/handlers/theme_handler.dart';
-import 'package:sitesurface_flutter_starter_project/util/notification/notification_handler.dart';
+import 'internet_handler.dart';
+import 'locale_handler.dart';
+import 'notification_handler.dart';
+import 'theme_handler.dart';
 
 class MultiHandler extends StatelessWidget {
   const MultiHandler({super.key, required this.builder});

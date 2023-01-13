@@ -2,7 +2,7 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 
 import '../../flavors/config/flavor_config.dart';
-import '../bot_toast/bot_toast_functions.dart';
+import '../../util/bot_toast/bot_toast_functions.dart';
 
 /// This class is used to handle the deep link.
 /// It will check the deep link and open the post details screen.

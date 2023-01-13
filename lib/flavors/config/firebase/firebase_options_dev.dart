@@ -11,14 +11,14 @@ import 'package:flutter/foundation.dart'
 /// import 'firebase_options_dev.dart';
 /// // ...
 /// await Firebase.initializeApp(
-///   options: DevDefaultFirebaseOptions.currentPlatform,
+///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
 class DevDefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       throw UnsupportedError(
-        'DevDefaultFirebaseOptions have not been configured for web - '
+        'DefaultFirebaseOptions have not been configured for web - '
         'you can reconfigure this by running the FlutterFire CLI again.',
       );
     }
@@ -29,22 +29,22 @@ class DevDefaultFirebaseOptions {
         return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
-          'DevDefaultFirebaseOptions have not been configured for macos - '
+          'DefaultFirebaseOptions have not been configured for macos - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
         throw UnsupportedError(
-          'DevDefaultFirebaseOptions have not been configured for windows - '
+          'DefaultFirebaseOptions have not been configured for windows - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.linux:
         throw UnsupportedError(
-          'DevDefaultFirebaseOptions have not been configured for linux - '
+          'DefaultFirebaseOptions have not been configured for linux - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
-          'DevDefaultFirebaseOptions are not supported for this platform.',
+          'DefaultFirebaseOptions are not supported for this platform.',
         );
     }
   }
@@ -63,7 +63,8 @@ class DevDefaultFirebaseOptions {
     messagingSenderId: '570560561302',
     projectId: 'sitesurface-flutter-starter',
     storageBucket: 'sitesurface-flutter-starter.appspot.com',
-    iosClientId: '570560561302-glj0n69qf2oauc68mqr103d73riln71j.apps.googleusercontent.com',
+    iosClientId:
+        '570560561302-glj0n69qf2oauc68mqr103d73riln71j.apps.googleusercontent.com',
     iosBundleId: 'com.sitesurface.starter.dev',
   );
 }

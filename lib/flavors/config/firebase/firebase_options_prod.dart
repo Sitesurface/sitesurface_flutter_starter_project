@@ -11,14 +11,14 @@ import 'package:flutter/foundation.dart'
 /// import 'firebase_options_prod.dart';
 /// // ...
 /// await Firebase.initializeApp(
-///   options: ProdDefaultFirebaseOptions.currentPlatform,
+///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
 class ProdDefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       throw UnsupportedError(
-        'ProdDefaultFirebaseOptions have not been configured for web - '
+        'DefaultFirebaseOptions have not been configured for web - '
         'you can reconfigure this by running the FlutterFire CLI again.',
       );
     }
@@ -29,22 +29,22 @@ class ProdDefaultFirebaseOptions {
         return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
-          'ProdDefaultFirebaseOptions have not been configured for macos - '
+          'DefaultFirebaseOptions have not been configured for macos - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
         throw UnsupportedError(
-          'ProdDefaultFirebaseOptions have not been configured for windows - '
+          'DefaultFirebaseOptions have not been configured for windows - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.linux:
         throw UnsupportedError(
-          'ProdDefaultFirebaseOptions have not been configured for linux - '
+          'DefaultFirebaseOptions have not been configured for linux - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
-          'ProdDefaultFirebaseOptions are not supported for this platform.',
+          'DefaultFirebaseOptions are not supported for this platform.',
         );
     }
   }
@@ -63,7 +63,8 @@ class ProdDefaultFirebaseOptions {
     messagingSenderId: '570560561302',
     projectId: 'sitesurface-flutter-starter',
     storageBucket: 'sitesurface-flutter-starter.appspot.com',
-    iosClientId: '570560561302-0a655kbo8g85uh4glamd5kdbame1ah4h.apps.googleusercontent.com',
+    iosClientId:
+        '570560561302-0a655kbo8g85uh4glamd5kdbame1ah4h.apps.googleusercontent.com',
     iosBundleId: 'com.sitesurface.starter',
   );
 }

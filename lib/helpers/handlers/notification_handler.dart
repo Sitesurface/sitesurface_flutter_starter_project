@@ -23,6 +23,7 @@ class _NotificationHandlerState extends State<NotificationHandler> {
   void initState() {
     initialiseFirebase();
     initialiseLocalNotifications();
+
     super.initState();
   }
 
@@ -32,6 +33,7 @@ class _NotificationHandlerState extends State<NotificationHandler> {
   }
 
   Future<void> initialiseFirebase() async {
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
     _firebaseMessaging.requestPermission();
     FirebaseMessaging.onMessage.listen((event) {
       var notification = event.notification;
@@ -94,3 +96,5 @@ class _NotificationHandlerState extends State<NotificationHandler> {
     Navigator.pushNamed(context, data["screen"], arguments: data);
   }
 }
+
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {}

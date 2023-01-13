@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sitesurface_flutter_starter_project/l10n/l10n.dart';
+import '../constants/assets/asset_constants.dart';
 import '../splash/splash_screen.dart';
-import '../util/asset_helper/assets_constants.dart';
-import '../util/error/error_helper_screen.dart';
+import '../util/error/error_screen.dart';
 
 class RouteHelper {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -18,7 +18,7 @@ class RouteHelper {
             builder: (context) {
               final locale = context.l10n;
               return ErrorScreen(
-                image: AssetConstants.error404,
+                image: AssetConstants.error_404,
                 title: locale.somethingWentWrong,
                 description: locale.sorryCantProcessDescription,
               );
@@ -31,7 +31,7 @@ class RouteHelper {
         builder: (context) {
           final locale = context.l10n;
           return ErrorScreen(
-            image: AssetConstants.error404,
+            image: AssetConstants.error_404,
             title: locale.somethingWentWrong,
             description: locale.sorryCantProcessDescription,
           );

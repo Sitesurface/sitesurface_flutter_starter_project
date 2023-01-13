@@ -3,9 +3,9 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sitesurface_flutter_starter_project/flavors/config/build_flavor.dart';
-import 'package:sitesurface_flutter_starter_project/helpers/firebase/messaging_helper.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/firebase/remote_config_helper.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/handlers/multi_handler.dart';
+import 'package:sitesurface_flutter_starter_project/util/error/error_screen.dart';
 import 'cache/shared_preferences.dart';
 import 'flavors/config/flavor_config.dart';
 import 'routes/route_helper.dart';
@@ -21,7 +21,6 @@ final navigatorKey = GlobalKey<NavigatorState>();
 Future mainCommon() async {
   runZonedGuarded<Future<void>>(() async {
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    MessagingHelper.init();
     await Pref.instance.init();
     if (FlavorConfig.instance.buildFlavor == BuildFlavor.prod) {
       FlutterError.onError = CrashlyticsHelper.recordFlutterError;
@@ -58,6 +57,8 @@ class MyApp extends StatelessWidget {
         themeMode: theme,
         onGenerateRoute: RouteHelper.generateRoute,
         initialRoute: SplashScreen.id,
+        onUnknownRoute: (settings) =>
+            MaterialPageRoute(builder: (context) => const ErrorScreen()),
       );
     });
   }

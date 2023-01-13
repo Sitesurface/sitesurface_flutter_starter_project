@@ -45,6 +45,14 @@ dependencies:
   concentric_transition: ^1.0.3
   firebase_performance: ^0.9.0+9
   google_fonts: ^3.0.1
+  shimmer: ^2.0.0
+  persistent_bottom_nav_bar: ^5.0.2
+  share_plus: ^6.3.0
+  in_app_review: ^2.0.6
+  flutter_facebook_auth: ^5.0.7
+  google_sign_in: ^5.4.3
+  sign_in_with_apple: ^4.3.0
+  crypto: ^3.0.2
 
 dev_dependencies:
   flutter_test:
