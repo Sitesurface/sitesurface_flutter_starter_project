@@ -6,12 +6,13 @@ import 'package:sitesurface_flutter_starter_project/util/styles/theme/theme_ext.
 
 import '../../../cache/prefs_constant.dart';
 import '../../../cache/shared_preferences.dart';
+import '../../auth/view/login_screen.dart';
 import '../data/onboard_data.dart';
 import '../widget/onboard_widget.dart';
 
-class OnboardingPage extends StatelessWidget {
+class OnboardingScreen extends StatelessWidget {
   static const String id = "/onboarding";
-  OnboardingPage({Key? key}) : super(key: key);
+  OnboardingScreen({Key? key}) : super(key: key);
 
   final data = OnboardData.onboardData;
 
@@ -34,8 +35,7 @@ class OnboardingPage extends StatelessWidget {
               );
             },
             onFinish: () {
-              //TODO : Uncomment
-              // Navigator.pushReplacementNamed(context, LoginScreen.id);
+              Navigator.pushReplacementNamed(context, LoginScreen.id);
             },
           ),
           Align(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sitesurface_flutter_starter_project/features/onboarding/view/onboarding.dart';
 import 'package:sitesurface_flutter_starter_project/l10n/l10n.dart';
+import 'package:sitesurface_flutter_starter_project/widgets/webview_screen.dart';
 import '../constants/assets/asset_constants.dart';
 import '../splash/splash_screen.dart';
 import '../util/error/error_screen.dart';
@@ -11,6 +13,22 @@ class RouteHelper {
         case SplashScreen.id:
           return MaterialPageRoute(
             builder: (context) => const SplashScreen(),
+          );
+        case WebViewScreen.id:
+          return MaterialPageRoute(
+            builder: (context) => const WebViewScreen(),
+          );
+        case OnboardingScreen.id:
+          return MaterialPageRoute(
+            builder: (context) => const WebViewScreen(),
+          );
+        case WebViewScreen.id:
+          return MaterialPageRoute(
+            builder: (context) => const WebViewScreen(),
+          );
+        case WebViewScreen.id:
+          return MaterialPageRoute(
+            builder: (context) => const WebViewScreen(),
           );
 
         default:
