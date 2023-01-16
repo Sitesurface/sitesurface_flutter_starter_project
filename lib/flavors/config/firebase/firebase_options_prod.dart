@@ -11,14 +11,14 @@ import 'package:flutter/foundation.dart'
 /// import 'firebase_options_prod.dart';
 /// // ...
 /// await Firebase.initializeApp(
-///   options: DefaultFirebaseOptions.currentPlatform,
+///   options: ProdDefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
-class DefaultFirebaseOptions {
+class ProdDefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
+        'ProdDefaultFirebaseOptions have not been configured for web - '
         'you can reconfigure this by running the FlutterFire CLI again.',
       );
     }
@@ -29,22 +29,22 @@ class DefaultFirebaseOptions {
         return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
+          'ProdDefaultFirebaseOptions have not been configured for macos - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
+          'ProdDefaultFirebaseOptions have not been configured for windows - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.linux:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for linux - '
+          'ProdDefaultFirebaseOptions have not been configured for linux - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
-          'DefaultFirebaseOptions are not supported for this platform.',
+          'ProdDefaultFirebaseOptions are not supported for this platform.',
         );
     }
   }

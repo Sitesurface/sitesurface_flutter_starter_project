@@ -216,14 +216,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                           onPressed: () async {
                                             var navigator =
                                                 Navigator.of(context);
-                                            var route = authBloc;
                                             if (_phoneFormKey.currentState!
                                                 .validate()) {
                                               await SmsAutoFill()
                                                   .listenForCode();
-                                              navigator.pushNamed(OtpScreen.id);
-                                              route.phoneNumberSignIn(
+                                              authBloc.phoneNumberSignIn(
                                                   phoneNumber ?? "");
+                                              navigator.pushNamed(OtpScreen.id,
+                                                  arguments: authBloc);
                                             }
                                           }),
                                       const SizedBox(

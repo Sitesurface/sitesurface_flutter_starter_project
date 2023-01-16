@@ -16,7 +16,7 @@ extension Pallet on ColorScheme {
       900: primary.withOpacity(0.9),
     },
   );
-  static const Color primary = Color(0xffC80111);
+  static const Color primary = Color(0xff8C3EFF);
   static const Color secondary = Color.fromARGB(255, 150, 138, 90);
   static const whiteBackground = Color(0xfff9f9f9);
   static const whiteBackground2 = Color(0xfff1f5fb);
@@ -40,6 +40,4 @@ extension Pallet on ColorScheme {
       brightness == Brightness.dark ? Colors.white : Colors.grey[900];
   Color get green => Colors.greenAccent;
   static const Color greenVar2 = Colors.green;
-  Color? get bloodCardBackground =>
-      brightness == Brightness.dark ? Colors.grey[900] : whiteBackground2;
 }

@@ -34,19 +34,21 @@ class _WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.webViewData.title),
-      ),
+      appBar: widget.webViewData.title != null
+          ? AppBar(
+              title: Text(widget.webViewData.title!),
+            )
+          : null,
       body: WebViewWidget(controller: controller),
     );
   }
 }
 
 class WebViewData {
-  String title;
+  String? title;
   Uri uri;
   WebViewData({
-    required this.title,
+    this.title,
     required this.uri,
   });
 }

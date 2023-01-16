@@ -45,8 +45,6 @@ class ApiHelper {
         ),
         headers: header,
       );
-      // var t = jsonDecode(response.body);
-      // log(t);
 
       responseJson = _returnResponse(response);
     } on SocketException {
@@ -142,31 +140,40 @@ class ApiHelper {
 
   /// Function to return the appropriate response according to the status code.
   static dynamic _returnResponse(dynamic response) async {
-    switch (response.statusCode) {
-      case 200:
-      case 201:
-        return jsonDecode(response.body);
-      case 401:
-        // navigatorKey.currentState?.context.read<AuthBloc>().logout();
-        throw AuthException(code: "unauthorized-access");
+    try {
+      switch (response.statusCode) {
+        case 200:
+        case 201:
+          return jsonDecode(response.body);
+        case 401:
+          throw AuthException(code: "unauthorized-access");
+        case 400:
+          String code = jsonDecode(response.body)['errors'][0];
+          throw ApiException(code: code);
+        case 422:
+          String code = jsonDecode(response.body)['message'];
+          throw ApiException(code: code);
+        case 500 - 599:
+          throw ServerException(
+              code: "server-error", message: "Internal Server Error");
+        default:
+          throw ('Error occured while Communication with Server with StatusCode : ${response.statusCode}');
+      }
+    } catch (e) {
+      _handleError(e);
+      rethrow;
+    }
+  }
 
-      case 400:
-        String code = jsonDecode(response.body)['errors'][0];
-        showNotification(title: code);
-        throw ApiException(code: code);
-
-      case 422:
-        String code = jsonDecode(response.body)['message'];
-        showNotification(title: code);
-
-        throw ApiException(code: code);
-
-      case 500 - 599:
-        throw ServerException(
-            code: "server-error", message: "Internal Server Error");
-
-      default:
-        throw ('Error occured while Communication with Server with StatusCode : ${response.statusCode}');
+  static void _handleError(dynamic e) {
+    if (e is AuthException) {
+      showNotification(title: 'Unauthorized Access');
+    } else if (e is ApiException) {
+      showNotification(title: e.code);
+    } else if (e is ServerException) {
+      showNotification(title: 'Internal Server Error');
+    } else {
+      showNotification(title: 'Error occured while Communication with Server');
     }
   }
 }

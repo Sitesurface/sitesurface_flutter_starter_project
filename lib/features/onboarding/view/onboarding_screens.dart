@@ -35,6 +35,7 @@ class OnboardingScreen extends StatelessWidget {
               );
             },
             onFinish: () {
+              Pref.instance.pref.setBool(PrefConstant.onboardCompleted, true);
               Navigator.pushReplacementNamed(context, LoginScreen.id);
             },
           ),
@@ -45,8 +46,7 @@ class OnboardingScreen extends StatelessWidget {
                 onPressed: () {
                   Pref.instance.pref
                       .setBool(PrefConstant.onboardCompleted, true);
-                  //TODO : Uncomment
-                  // Navigator.pushReplacementNamed(context, LoginScreen.id);
+                  Navigator.pushReplacementNamed(context, LoginScreen.id);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

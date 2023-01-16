@@ -4,7 +4,7 @@ import 'package:sitesurface_flutter_starter_project/features/auth/view/otp_scree
 import '../constants/assets/asset_constants.dart';
 import '../features/auth/view/login_screen.dart';
 import '../features/dashboard/dashboard.dart';
-import '../features/onboarding/view/onboarding.dart';
+import '../features/onboarding/view/onboarding_screens.dart';
 import '../l10n/l10n.dart';
 import '../splash/splash_screen.dart';
 import '../util/error/error_screen.dart';

@@ -36,7 +36,7 @@ class Pref {
     );
     await pref.clear();
     await HydratedBloc.storage.clear();
-    // pref.setBool(PrefConstant.onboardCompleted, true);
+    pref.setBool(PrefConstant.onboardCompleted, true);
     if (theme != null) {
       Pref.instance.pref.setString(
         PrefConstant.themeMode,

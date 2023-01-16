@@ -1,10 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:sitesurface_flutter_starter_project/cache/shared_preferences.dart';
+import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
+import 'package:sitesurface_flutter_starter_project/splash/splash_screen.dart';
+import 'package:sitesurface_flutter_starter_project/util/asset_helper/cache_img_helper.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard();
-
+  const Dashboard({super.key});
   static const id = "/dashboard";
 
   @override
@@ -12,94 +14,39 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  late PersistentTabController _controller;
-
-  @override
-  void initState() {
-    _controller = PersistentTabController(initialIndex: 0);
-    super.initState();
-  }
-
-  List<Widget> _buildScreens() {
-    return [
-      Container(
-        color: Colors.redAccent,
-      ),
-      Container(
-        color: Colors.blueAccent,
-      ),
-      Container(
-        color: Colors.pinkAccent,
-      ),
-      Container(
-        color: Colors.purpleAccent,
-      ),
-    ];
-  }
-
-  List<PersistentBottomNavBarItem> _navBarsItems() {
-    return [
-      PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.home),
-        title: ("Home"),
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.search),
-        title: ("Search"),
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.person),
-        title: ("Account"),
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.settings),
-        title: ("Settings"),
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      controller: _controller,
-      screens: _buildScreens(),
-      items: _navBarsItems(),
-      confineInSafeArea: true,
-      backgroundColor: Colors.white, // Default is Colors.white.
-      handleAndroidBackButtonPress: true, // Default is true.
-      resizeToAvoidBottomInset:
-          true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-      stateManagement: true, // Default is true.
-      hideNavigationBarWhenKeyboardShows:
-          true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-      decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Colors.white,
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          InkWell(
+              onTap: () async {
+                if (FirebaseAuth.instance.currentUser != null) {
+                  await FirebaseAuth.instance.signOut();
+                }
+                Pref.instance.pref.clear();
+                Navigator.pushNamed(context, SplashScreen.id);
+              },
+              child: const Icon(Icons.logout)),
+        ],
       ),
-      popAllScreensOnTapOfSelectedTab: true,
-      popActionScreens: PopActionScreensType.all,
-      itemAnimationProperties: const ItemAnimationProperties(
-        // Navigation Bar's items animation properties.
-        duration: Duration(milliseconds: 200),
-        curve: Curves.ease,
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Column(
+          children: const [
+            Text("Something"),
+            ImgHelper(
+              image: AssetConstants.applelogo,
+              fit: BoxFit.cover,
+              height: 200,
+              width: 200,
+              showLoader: true,
+            ),
+          ],
+        ),
       ),
-      screenTransitionAnimation: const ScreenTransitionAnimation(
-        // Screen transition animation on change of selected tab.
-        animateTabTransition: true,
-        curve: Curves.ease,
-        duration: Duration(milliseconds: 200),
-      ),
-      navBarStyle:
-          NavBarStyle.style1, // Choose the nav bar style with this property.
+      // body: WebViewScreen(
+      //     webViewData: WebViewData(uri: Uri.parse("https://sitesurface.com"))),
     );
   }
 }
