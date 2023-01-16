@@ -1,8 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sitesurface_flutter_starter_project/constants/assets/icon_constants.dart';
 
 import '../../cache/shared_preferences.dart';
+import '../cache/prefs_constant.dart';
+import '../features/auth/view/login_screen.dart';
+import '../features/dashboard/dashboard.dart';
+import '../features/onboarding/view/onboarding.dart';
 
 class SplashScreen extends StatefulWidget {
   static const id = "/";
@@ -16,26 +21,25 @@ class _SplashScreenState extends State<SplashScreen> {
   final SharedPreferences _prefs = Pref.instance.pref;
 
   Future<String> getAuth() async {
-    return "";
-    // if (FirebaseAuth.instance.currentUser != null) {
-    //   var bearerToken = await FirebaseAuth.instance.currentUser!.getIdToken();
+    if (FirebaseAuth.instance.currentUser != null) {
+      var bearerToken = await FirebaseAuth.instance.currentUser!.getIdToken();
 
-    //   await _prefs.setString(PrefConstant.authToken, bearerToken);
-    //   return Dashboard.id;
-    // }
-    // bool? authSkipped = _prefs.getBool(PrefConstant.authSkipped);
-    // if (authSkipped != null && authSkipped) {
-    //   return Dashboard.id;
-    // }
+      await _prefs.setString(PrefConstant.authToken, bearerToken);
+      return Dashboard.id;
+    }
+    bool? authSkipped = _prefs.getBool(PrefConstant.authSkipped);
+    if (authSkipped != null && authSkipped) {
+      return Dashboard.id;
+    }
 
-    // bool? onboardingCompleted = _prefs.getBool(PrefConstant.onboardCompleted);
-    // if (onboardingCompleted != null && onboardingCompleted) {
-    //   return LoginScreen.id;
-    // }
-    // _prefs.remove(PrefConstant.authSkipped);
-    // _prefs.remove(PrefConstant.authToken);
-    // _prefs.remove(PrefConstant.onboardCompleted);
-    // return OnboardingPage.id;
+    bool? onboardingCompleted = _prefs.getBool(PrefConstant.onboardCompleted);
+    if (onboardingCompleted != null && onboardingCompleted) {
+      return LoginScreen.id;
+    }
+    _prefs.remove(PrefConstant.authSkipped);
+    _prefs.remove(PrefConstant.authToken);
+    _prefs.remove(PrefConstant.onboardCompleted);
+    return OnboardingScreen.id;
   }
 
   @override

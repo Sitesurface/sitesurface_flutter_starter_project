@@ -40,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String? phoneNumber;
   final _emailFormKey = GlobalKey<FormState>();
   final _phoneFormKey = GlobalKey<FormState>();
+  final authBloc = AuthBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -50,283 +51,288 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 18),
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: InkWell(
-                    onTap: () {
-                      Pref.instance.pref
-                          .setBool(PrefConstant.authSkipped, true);
-                      Navigator.pushReplacementNamed(context, Dashboard.id);
-                    },
-                    child: Text(
-                      locale.skip,
-                      style: textTheme.bodyText1!,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: BlocListener<AuthBloc, AuthState>(
-                    listener: (context, state) {},
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          LottieAsset(
-                              assetName: LottieConstants.login,
-                              fit: BoxFit.contain,
-                              height: size.height * 0.35,
-                              width: size.width),
-                          if (isEmailSignIn)
-                            Form(
-                                key: _emailFormKey,
-                                child: Column(
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: TextFieldHeader(
-                                        title: locale.email,
-                                      ),
-                                    ),
-                                    CTextField(
-                                      onChanged: (value) {
-                                        email = value;
-                                      },
-                                      label: locale.email,
-                                      keyboardType: TextInputType.emailAddress,
-                                      validator: Validators.email,
-                                    ),
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: TextFieldHeader(
-                                        title: locale.password,
-                                      ),
-                                    ),
-                                    CTextField(
-                                      onChanged: (value) {
-                                        password = value;
-                                      },
-                                      label: locale.password,
-                                      isPasswordField: true,
-                                      validator: Validators.password,
-                                    ),
-                                    RoundedButton(
-                                      label: locale.loginSignUp,
-                                      onPressed: () async {
-                                        if (_emailFormKey.currentState!
-                                            .validate()) {
-                                          await context
-                                              .read<AuthBloc>()
-                                              .emailLogin(
-                                                  emailAddress: email!,
-                                                  password: password!);
-                                        }
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Align(
-                                      alignment: Alignment.bottomRight,
-                                      child: TextButton(
-                                        onPressed: () async {
-                                          //dialog to enter email
-                                          String? resetEmail;
-                                          await showDialog(
-                                            context: context,
-                                            builder: (context) => AlertDialog(
-                                              title: Text(
-                                                locale.enterEmail,
-                                              ),
-                                              content: CTextField(
-                                                onChanged: (value) {
-                                                  resetEmail = value;
-                                                },
-                                                label: locale.email,
-                                                keyboardType:
-                                                    TextInputType.emailAddress,
-                                                validator: Validators.email,
-                                              ),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Text(locale.cancel),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () async {
-                                                    Navigator.pop(context);
-                                                    await context
-                                                        .read<AuthBloc>()
-                                                        .forgetPassword(
-                                                            resetEmail!);
-                                                  },
-                                                  child: Text(locale.reset),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        },
-                                        child: Text(
-                                          locale.forgetPassword,
-                                          style: textTheme.bodyMedium,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ))
-                          else
-                            Form(
-                                key: _phoneFormKey,
-                                child: Column(
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: TextFieldHeader(
-                                        title: locale.phoneNumber,
-                                      ),
-                                    ),
-                                    PhoneTextField(
-                                        onPhoneNumberChange: (PhoneNumber num) {
-                                      phoneNumber =
-                                          "${num.countryCode}${num.number}";
-                                    }),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    RoundedButton(
-                                        label: locale.getOtp,
-                                        onPressed: () async {
-                                          var navigator = Navigator.of(context);
-                                          var route = context.read<AuthBloc>();
-                                          if (_phoneFormKey.currentState!
-                                              .validate()) {
-                                            await SmsAutoFill().listenForCode();
-                                            navigator.pushNamed(OtpScreen.id);
-                                            route.phoneNumberSignIn(
-                                                phoneNumber ?? "");
-                                          }
-                                        }),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                  ],
-                                )),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text("or login with...",
-                              style: textTheme.labelMedium),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: [
-                              SocialButton(
-                                assetName: AssetConstants.googlelogo,
-                                onPressed: () async {
-                                  await context.read<AuthBloc>().googleLogin();
-                                },
-                              ),
-                              SocialButton(
-                                assetName: AssetConstants.facebooklogo,
-                                onPressed: () async {
-                                  await context
-                                      .read<AuthBloc>()
-                                      .signInWithFacebook();
-                                },
-                              ),
-                              if (Platform.isIOS)
-                                SocialButton(
-                                  assetName: AssetConstants.applelogo,
-                                  onPressed: () async {
-                                    await context
-                                        .read<AuthBloc>()
-                                        .appleSignin();
-                                  },
-                                ),
-                              SocialButton(
-                                assetName: isEmailSignIn
-                                    ? AssetConstants.phonelogo
-                                    : AssetConstants.emaillogo,
-                                onPressed: () {
-                                  setState(() {
-                                    isEmailSignIn = !isEmailSignIn;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                        ],
+      body: BlocProvider(
+        create: (context) => authBloc,
+        child: SafeArea(
+          child: GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: InkWell(
+                      onTap: () {
+                        Pref.instance.pref
+                            .setBool(PrefConstant.authSkipped, true);
+                        Navigator.pushReplacementNamed(context, Dashboard.id);
+                      },
+                      child: Text(
+                        locale.skip,
+                        style: textTheme.bodyText1!,
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                          text: locale.byContinuingUagree,
-                          style: textTheme.bodyMedium,
+                  Expanded(
+                    child: BlocListener<AuthBloc, AuthState>(
+                      bloc: authBloc,
+                      listener: (context, state) async {
+                        if (state.error) {
+                          //TODO: Handle error
+                          authBloc.clearError();
+                        }
+                        if (state.isAuthenticated) {
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, Dashboard.id, (route) => false);
+                        }
+                      },
+                      child: SingleChildScrollView(
+                        child: Column(
                           children: [
-                            TextSpan(
-                                text: locale.privacyPolicy,
+                            LottieAsset(
+                                assetName: LottieConstants.login,
+                                fit: BoxFit.contain,
+                                height: size.height * 0.35,
+                                width: size.width),
+                            if (isEmailSignIn)
+                              Form(
+                                  key: _emailFormKey,
+                                  child: Column(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: TextFieldHeader(
+                                          title: locale.email,
+                                        ),
+                                      ),
+                                      CTextField(
+                                        onChanged: (value) {
+                                          email = value;
+                                        },
+                                        label: locale.email,
+                                        keyboardType:
+                                            TextInputType.emailAddress,
+                                        validator: Validators.email,
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: TextFieldHeader(
+                                          title: locale.password,
+                                        ),
+                                      ),
+                                      CTextField(
+                                        onChanged: (value) {
+                                          password = value;
+                                        },
+                                        label: locale.password,
+                                        isPasswordField: true,
+                                        validator: Validators.password,
+                                      ),
+                                      RoundedButton(
+                                        label: locale.loginSignUp,
+                                        onPressed: () async {
+                                          if (_emailFormKey.currentState!
+                                              .validate()) {
+                                            await authBloc.emailLogin(
+                                                emailAddress: email!,
+                                                password: password!);
+                                          }
+                                        },
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Align(
+                                        alignment: Alignment.bottomRight,
+                                        child: TextButton(
+                                          onPressed: () async {
+                                            //dialog to enter email
+                                            String? resetEmail;
+                                            await showDialog(
+                                              context: context,
+                                              builder: (context) => AlertDialog(
+                                                title: Text(
+                                                  locale.enterEmail,
+                                                ),
+                                                content: CTextField(
+                                                  onChanged: (value) {
+                                                    resetEmail = value;
+                                                  },
+                                                  label: locale.email,
+                                                  keyboardType: TextInputType
+                                                      .emailAddress,
+                                                  validator: Validators.email,
+                                                ),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(locale.cancel),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () async {
+                                                      Navigator.pop(context);
+                                                      await authBloc
+                                                          .forgetPassword(
+                                                              resetEmail!);
+                                                    },
+                                                    child: Text(locale.reset),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            locale.forgetPassword,
+                                            style: textTheme.bodyMedium,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                            else
+                              Form(
+                                  key: _phoneFormKey,
+                                  child: Column(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: TextFieldHeader(
+                                          title: locale.phoneNumber,
+                                        ),
+                                      ),
+                                      PhoneTextField(onPhoneNumberChange:
+                                          (PhoneNumber num) {
+                                        phoneNumber =
+                                            "${num.countryCode}${num.number}";
+                                      }),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      RoundedButton(
+                                          label: locale.getOtp,
+                                          onPressed: () async {
+                                            var navigator =
+                                                Navigator.of(context);
+                                            var route = authBloc;
+                                            if (_phoneFormKey.currentState!
+                                                .validate()) {
+                                              await SmsAutoFill()
+                                                  .listenForCode();
+                                              navigator.pushNamed(OtpScreen.id);
+                                              route.phoneNumberSignIn(
+                                                  phoneNumber ?? "");
+                                            }
+                                          }),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                    ],
+                                  )),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text("or login with...",
+                                style: textTheme.labelMedium),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              children: [
+                                SocialButton(
+                                  assetName: AssetConstants.googlelogo,
+                                  onPressed: () async {
+                                    await authBloc.googleLogin();
+                                  },
+                                ),
+                                SocialButton(
+                                  assetName: AssetConstants.facebooklogo,
+                                  onPressed: () async {
+                                    await authBloc.signInWithFacebook();
+                                  },
+                                ),
+                                if (Platform.isIOS)
+                                  SocialButton(
+                                    assetName: AssetConstants.applelogo,
+                                    onPressed: () async {
+                                      await authBloc.appleSignin();
+                                    },
+                                  ),
+                                SocialButton(
+                                  assetName: isEmailSignIn
+                                      ? AssetConstants.phonelogo
+                                      : AssetConstants.emaillogo,
+                                  onPressed: () {
+                                    setState(() {
+                                      isEmailSignIn = !isEmailSignIn;
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                            text: locale.byContinuingUagree,
+                            style: textTheme.bodyMedium,
+                            children: [
+                              TextSpan(
+                                  text: locale.privacyPolicy,
+                                  style: textTheme.bodyMedium?.copyWith(
+                                      decoration: TextDecoration.underline,
+                                      color: colorScheme.primary),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      final uri =
+                                          Uri.parse("https://sitesurface.com");
+                                      Navigator.pushNamed(
+                                        context,
+                                        WebViewScreen.id,
+                                        arguments: WebViewData(
+                                          title: locale.termsAndConditions,
+                                          uri: uri,
+                                        ),
+                                      );
+                                    }),
+                              TextSpan(
+                                text: " ${locale.and}\n",
+                                style: textTheme.bodyMedium,
+                              ),
+                              TextSpan(
+                                text: locale.termsAndConditions,
                                 style: textTheme.bodyMedium?.copyWith(
                                     decoration: TextDecoration.underline,
                                     color: colorScheme.primary),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    var constant = context.read<ConstantBloc>();
-                                    String uri = constant.state.constants
-                                            ?.setting?.privacyPolicy ??
-                                        '';
+                                    final uri =
+                                        Uri.parse("https://sitesurface.com");
                                     Navigator.pushNamed(
                                       context,
                                       WebViewScreen.id,
                                       arguments: WebViewData(
-                                        title: locale.privacyPolicy,
-                                        url: uri,
+                                        title: locale.termsAndConditions,
+                                        uri: uri,
                                       ),
                                     );
-                                  }),
-                            TextSpan(
-                              text: " ${locale.and}\n",
-                              style: textTheme.bodyMedium,
-                            ),
-                            TextSpan(
-                              text: locale.termsAndConditions,
-                              style: textTheme.bodyMedium?.copyWith(
-                                  decoration: TextDecoration.underline,
-                                  color: colorScheme.primary),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  var constant = context.read<ConstantBloc>();
-                                  String uri = constant.state.constants?.setting
-                                          ?.termsAndConditions ??
-                                      '';
-                                  Navigator.pushNamed(
-                                    context,
-                                    WebScreen.id,
-                                    arguments: WebViewData(
-                                      title: locale.termsAndConditions,
-                                      url: uri,
-                                    ),
-                                  );
-                                },
-                            ),
-                          ])),
-                ),
-              ],
+                                  },
+                              ),
+                            ])),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

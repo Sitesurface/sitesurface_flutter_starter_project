@@ -25,7 +25,7 @@ configure_flutter_fire() {
     flutter pub run build_runner build --delete-conflicting-outputs
     
     echo "Renaming class DefaultFirebaseOptions to $class_name in $out_file"
-    sed -i "s/DefaultFirebaseOptions/$class_name/g" $out_file    
+    sed -i 's/DefaultFirebaseOptions/$class_name/g' $out_file    
     echo "Moving generated google-services.json to android/app/src/$environment"
     mv android/app/google-services.json android/app/src/$environment/google-services.json
     echo "Moving generated GoogleService-Info.plist ios/config/$environment"

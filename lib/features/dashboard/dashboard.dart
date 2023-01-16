@@ -5,6 +5,8 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 class Dashboard extends StatefulWidget {
   const Dashboard();
 
+  static const id = "/dashboard";
+
   @override
   State<Dashboard> createState() => _DashboardState();
 }

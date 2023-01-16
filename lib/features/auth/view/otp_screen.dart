@@ -11,8 +11,9 @@ import '../bloc/auth_bloc.dart';
 import '../bloc/auth_state.dart';
 
 class OtpScreen extends StatefulWidget {
-  const OtpScreen({super.key});
+  const OtpScreen({super.key, required this.authBloc});
   static const id = '/otp';
+  final AuthBloc authBloc;
 
   @override
   State<OtpScreen> createState() => _OtpScreenState();
@@ -33,6 +34,7 @@ class _OtpScreenState extends State<OtpScreen> {
     final colorScheme = context.colorScheme;
     final size = MediaQuery.of(context).size;
     final locale = context.l10n;
+    final authBloc = widget.authBloc;
 
     return Scaffold(
       body: SafeArea(
@@ -40,6 +42,7 @@ class _OtpScreenState extends State<OtpScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: SingleChildScrollView(
             child: BlocBuilder<AuthBloc, AuthState>(
+              bloc: authBloc,
               builder: (context, state) {
                 return Column(
                   children: [
@@ -99,7 +102,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         InkWell(
                           onTap: () {
                             if (state.canResendOtp) {
-                              context.read<AuthBloc>().resendOtp();
+                              authBloc.resendOtp();
                             }
                           },
                           child: Text(state.resendText ?? "",
@@ -116,7 +119,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         if (otp == null) {
                           return;
                         }
-                        context.read<AuthBloc>().verifyOTP(otp!);
+                        authBloc.verifyOTP(otp!);
                       },
                     ),
                   ],

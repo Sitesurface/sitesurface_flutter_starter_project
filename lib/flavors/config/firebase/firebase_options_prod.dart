@@ -14,7 +14,7 @@ import 'package:flutter/foundation.dart'
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
-class ProdDefaultFirebaseOptions {
+class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       throw UnsupportedError(
@@ -63,8 +63,7 @@ class ProdDefaultFirebaseOptions {
     messagingSenderId: '570560561302',
     projectId: 'sitesurface-flutter-starter',
     storageBucket: 'sitesurface-flutter-starter.appspot.com',
-    iosClientId:
-        '570560561302-0a655kbo8g85uh4glamd5kdbame1ah4h.apps.googleusercontent.com',
+    iosClientId: '570560561302-0a655kbo8g85uh4glamd5kdbame1ah4h.apps.googleusercontent.com',
     iosBundleId: 'com.sitesurface.starter',
   );
 }

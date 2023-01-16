@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewScreen extends StatefulWidget {
-  const WebViewScreen({super.key});
+  const WebViewScreen({super.key, required this.webViewData});
 
   static const id = "/webview";
+
+  final WebViewData webViewData;
 
   @override
   State<WebViewScreen> createState() => _WebViewScreenState();
@@ -27,7 +27,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://flutter.dev'));
+      ..loadRequest(widget.webViewData.uri);
     super.initState();
   }
 
@@ -35,9 +35,18 @@ class _WebViewScreenState extends State<WebViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Web View Widget"),
+        title: Text(widget.webViewData.title),
       ),
       body: WebViewWidget(controller: controller),
     );
   }
+}
+
+class WebViewData {
+  String title;
+  Uri uri;
+  WebViewData({
+    required this.title,
+    required this.uri,
+  });
 }

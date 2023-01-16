@@ -7,34 +7,34 @@ import '../widget/onboard_widget.dart';
 class OnboardData {
   static List<OnboardWidget> onboardData = [
     OnboardWidget(
-      title: "Sharing Made Easy",
+      title: "Flutter Starter Project",
       subtitle:
-          "Connect with others to give and recieve items for free. Help others by sharing your items.",
+          "Everything included in this project is to help you get started with your next Flutter project.",
       backgroundImage: const LottieAsset(assetName: LottieConstants.bg1),
       backgroundColor: const Color.fromRGBO(0, 10, 56, 1),
       titleColor: Colors.pink,
       subtitleColor: Colors.white,
-      lottie: const LottieAsset(assetName: LottieConstants.help1),
+      lottie: const LottieAsset(assetName: LottieConstants.onboarding1),
     ),
     OnboardWidget(
-      title: "The Sharing Circle",
+      title: "Start your project with this starter project",
       subtitle:
-          "Help the needy by donating items to them or by giving blood who needs them urgently.",
+          "This starter project includes all the necessary features to get you started with your next Flutter project.",
       backgroundImage: const LottieAsset(assetName: LottieConstants.bg2),
       backgroundColor: Colors.white,
       titleColor: Colors.purple,
       subtitleColor: const Color.fromRGBO(0, 10, 56, 1),
-      lottie: const LottieAsset(assetName: LottieConstants.help2),
+      lottie: const LottieAsset(assetName: LottieConstants.onboarding2),
     ),
     OnboardWidget(
-      title: "Help1- The Giving Platform",
+      title: "Perfect for your next project",
       subtitle:
-          "Connect with others and share your gently used items for free. Reduce waste and make a positive impact",
+          "Everything handled out of the box. Just add your own features and you're good to go.",
       backgroundImage: const LottieAsset(assetName: LottieConstants.bg3),
       backgroundColor: const Color.fromRGBO(71, 59, 117, 1),
       titleColor: Colors.yellow,
       subtitleColor: Colors.white,
-      lottie: const LottieAsset(assetName: LottieConstants.bg3),
+      lottie: const LottieAsset(assetName: LottieConstants.onboarding3),
     ),
   ];
 }

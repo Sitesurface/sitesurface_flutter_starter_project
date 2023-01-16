@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/features/onboarding/view/onboarding.dart';
-import 'package:sitesurface_flutter_starter_project/l10n/l10n.dart';
-import 'package:sitesurface_flutter_starter_project/widgets/webview_screen.dart';
+import 'package:sitesurface_flutter_starter_project/features/auth/bloc/auth_bloc.dart';
+import 'package:sitesurface_flutter_starter_project/features/auth/view/otp_screen.dart';
 import '../constants/assets/asset_constants.dart';
+import '../features/auth/view/login_screen.dart';
+import '../features/dashboard/dashboard.dart';
+import '../features/onboarding/view/onboarding.dart';
+import '../l10n/l10n.dart';
 import '../splash/splash_screen.dart';
 import '../util/error/error_screen.dart';
+import '../widgets/webview_screen.dart';
 
 class RouteHelper {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -14,31 +18,41 @@ class RouteHelper {
           return MaterialPageRoute(
             builder: (context) => const SplashScreen(),
           );
-        case WebViewScreen.id:
-          return MaterialPageRoute(
-            builder: (context) => const WebViewScreen(),
-          );
         case OnboardingScreen.id:
           return MaterialPageRoute(
-            builder: (context) => const WebViewScreen(),
+            builder: (context) => OnboardingScreen(),
           );
-        case WebViewScreen.id:
+        case LoginScreen.id:
           return MaterialPageRoute(
-            builder: (context) => const WebViewScreen(),
+            builder: (context) => const LoginScreen(),
           );
-        case WebViewScreen.id:
+        case OtpScreen.id:
+          final authBloc = settings.arguments as AuthBloc;
           return MaterialPageRoute(
-            builder: (context) => const WebViewScreen(),
+            builder: (context) => OtpScreen(
+              authBloc: authBloc,
+            ),
+          );
+        case Dashboard.id:
+          return MaterialPageRoute(
+            builder: (context) => const Dashboard(),
           );
 
+        case WebViewScreen.id:
+          final webViewData = settings.arguments as WebViewData;
+          return MaterialPageRoute(
+            builder: (context) => WebViewScreen(
+              webViewData: webViewData,
+            ),
+          );
         default:
           return MaterialPageRoute(
             builder: (context) {
-              final locale = context.l10n;
               return ErrorScreen(
                 image: AssetConstants.error_404,
-                title: locale.somethingWentWrong,
-                description: locale.sorryCantProcessDescription,
+                title: AppLocalizations.of(context)?.somethingWentWrong,
+                description:
+                    AppLocalizations.of(context)?.sorryCantProcessDescription,
               );
             },
           );
@@ -47,11 +61,11 @@ class RouteHelper {
       debugPrint(e.toString());
       return MaterialPageRoute(
         builder: (context) {
-          final locale = context.l10n;
           return ErrorScreen(
             image: AssetConstants.error_404,
-            title: locale.somethingWentWrong,
-            description: locale.sorryCantProcessDescription,
+            title: AppLocalizations.of(context)?.somethingWentWrong,
+            description:
+                AppLocalizations.of(context)?.sorryCantProcessDescription,
           );
         },
       );

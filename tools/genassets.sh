@@ -39,7 +39,7 @@ for file in assets/lottie/*; do
 camelCase=$(echo "${fileName%.*}" | sed -r 's/(^|_|\/)([a-z])/\2/g')
   # Convert first character to lowercase
   camelCase=$(echo "$camelCase" | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
-  echo "  static const $camelCase = \"assets/icons/$fileName\";" >> $outputFile
+  echo "  static const $camelCase = \"assets/lottie/$fileName\";" >> $outputFile
 done
 
 echo "}" >> $outputFile
