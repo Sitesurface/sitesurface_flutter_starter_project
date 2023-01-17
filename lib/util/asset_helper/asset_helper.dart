@@ -3,26 +3,28 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sitesurface_flutter_starter_project/constants/assets/icon_constants.dart';
+import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
 import 'package:sitesurface_flutter_starter_project/util/styles/colors/pallet.dart';
 
-/// Send either Network image , file path or asset image
-class ImgHelper extends StatelessWidget {
-  const ImgHelper(
+/// Send either Network image , file path , lottie or asset image
+class AssetHelper extends StatelessWidget {
+  /// Send either Network image , file path , lottie or asset image in image property
+  const AssetHelper(
       {super.key,
       required this.image,
       this.height,
       this.width,
       this.fit,
-      this.showLoader = false});
+      this.showLoader = true});
   final String? image;
   final double? height, width;
   final BoxFit? fit;
   final bool showLoader;
 
   Widget errorImageWidget() => Image.asset(
-        IconConstants.applogo,
+        AssetConstants.iconApplogo,
         height: height,
         width: width,
         fit: fit ?? BoxFit.cover,
@@ -36,7 +38,6 @@ class ImgHelper extends StatelessWidget {
     if (Uri.parse(image!).isAbsolute) {
       return CachedNetworkImage(
         imageUrl: image ?? "",
-        cacheKey: DateTime.now().millisecondsSinceEpoch.toString(),
         height: height,
         width: width,
         fit: fit ?? BoxFit.cover,
@@ -67,6 +68,12 @@ class ImgHelper extends StatelessWidget {
     } else if (image!.endsWith(".svg")) {
       return SvgPicture.asset(image ?? "",
           height: height, width: width, fit: fit ?? BoxFit.cover);
+    } else if (image!.endsWith(".json") || image!.endsWith(".lottie")) {
+      return Lottie.asset(image!,
+          height: height,
+          width: width,
+          errorBuilder: (context, error, stackTrace) => errorImageWidget(),
+          fit: fit ?? BoxFit.cover);
     } else {
       return Image.asset(
         image!,

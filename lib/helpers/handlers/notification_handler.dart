@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:sitesurface_flutter_starter_project/helpers/firebase/dynamic_link_helper.dart';
 
 class NotificationHandler extends StatefulWidget {
   final Widget child;
@@ -51,11 +52,11 @@ class _NotificationHandlerState extends State<NotificationHandler> {
           payload: jsonEncode(event.data));
     });
     FirebaseMessaging.onMessageOpenedApp.listen((event) {
-      _screenNavigation(event.data);
+      ActionHandler.handle(event.data);
     });
     _firebaseMessaging.getInitialMessage().then((event) {
       if (event == null) return;
-      _screenNavigation(event.data);
+      ActionHandler.handle(event.data);
     });
   }
 
@@ -87,13 +88,8 @@ class _NotificationHandlerState extends State<NotificationHandler> {
         onDidReceiveNotificationResponse: (notificationResponse) async {
       if (notificationResponse.payload == null) return;
       var message = jsonDecode(notificationResponse.payload!);
-      _screenNavigation(message);
+      ActionHandler.handle(message);
     });
-  }
-
-  _screenNavigation(Map<String, dynamic> data) {
-    if (data["id"] == "sitesurface_flutter_chat") return;
-    Navigator.pushNamed(context, data["screen"], arguments: data);
   }
 }
 

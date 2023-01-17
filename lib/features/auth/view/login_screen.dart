@@ -4,7 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/phone_number.dart';
-import 'package:sitesurface_flutter_starter_project/constants/assets/lottie_constants.dart';
 import 'package:sitesurface_flutter_starter_project/l10n/l10n.dart';
 import 'package:sitesurface_flutter_starter_project/util/styles/theme/theme_ext.dart';
 import 'package:sms_autofill/sms_autofill.dart';
@@ -12,7 +11,7 @@ import 'package:sms_autofill/sms_autofill.dart';
 import '../../../cache/prefs_constant.dart';
 import '../../../cache/shared_preferences.dart';
 import '../../../constants/assets/asset_constants.dart';
-import '../../../util/asset_helper/lottie_helper.dart';
+import '../../../util/asset_helper/asset_helper.dart';
 import '../../../util/validators.dart';
 import '../../../widgets/buttons/rounded_button.dart';
 import '../../../widgets/text_form_field/phone_text_field.dart';
@@ -90,8 +89,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            LottieAsset(
-                                assetName: LottieConstants.login,
+                            AssetHelper(
+                                image: AssetConstants.lottieLogin,
                                 fit: BoxFit.contain,
                                 height: size.height * 0.35,
                                 width: size.width),
@@ -242,28 +241,28 @@ class _LoginScreenState extends State<LoginScreen> {
                             Row(
                               children: [
                                 SocialButton(
-                                  assetName: AssetConstants.googlelogo,
+                                  assetName: AssetConstants.imageGooglelogo,
                                   onPressed: () async {
                                     await authBloc.googleLogin();
                                   },
                                 ),
                                 SocialButton(
-                                  assetName: AssetConstants.facebooklogo,
+                                  assetName: AssetConstants.imageFacebooklogo,
                                   onPressed: () async {
                                     await authBloc.signInWithFacebook();
                                   },
                                 ),
                                 if (Platform.isIOS)
                                   SocialButton(
-                                    assetName: AssetConstants.applelogo,
+                                    assetName: AssetConstants.imageApplelogo,
                                     onPressed: () async {
                                       await authBloc.appleSignin();
                                     },
                                   ),
                                 SocialButton(
                                   assetName: isEmailSignIn
-                                      ? AssetConstants.phonelogo
-                                      : AssetConstants.emaillogo,
+                                      ? AssetConstants.imagePhonelogo
+                                      : AssetConstants.imageEmaillogo,
                                   onPressed: () {
                                     setState(() {
                                       isEmailSignIn = !isEmailSignIn;

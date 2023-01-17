@@ -49,7 +49,7 @@ class RouteHelper {
           return MaterialPageRoute(
             builder: (context) {
               return ErrorScreen(
-                image: AssetConstants.error_404,
+                image: AssetConstants.imageError404,
                 title: AppLocalizations.of(context)?.somethingWentWrong,
                 description:
                     AppLocalizations.of(context)?.sorryCantProcessDescription,
@@ -62,7 +62,7 @@ class RouteHelper {
       return MaterialPageRoute(
         builder: (context) {
           return ErrorScreen(
-            image: AssetConstants.error_404,
+            image: AssetConstants.imageError404,
             title: AppLocalizations.of(context)?.somethingWentWrong,
             description:
                 AppLocalizations.of(context)?.sorryCantProcessDescription,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sitesurface_flutter_starter_project/constants/assets/lottie_constants.dart';
 import 'package:sitesurface_flutter_starter_project/l10n/l10n.dart';
 import 'package:sitesurface_flutter_starter_project/util/styles/theme/theme_ext.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
-import '../../../util/asset_helper/lottie_helper.dart';
+import '../../../constants/assets/asset_constants.dart';
+import '../../../util/asset_helper/asset_helper.dart';
 import '../../../widgets/buttons/rounded_button.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_state.dart';
@@ -46,8 +46,8 @@ class _OtpScreenState extends State<OtpScreen> {
               builder: (context, state) {
                 return Column(
                   children: [
-                    LottieAsset(
-                      assetName: LottieConstants.otp,
+                    AssetHelper(
+                      image: AssetConstants.lottieOtp,
                       height: size.height * 0.3,
                       width: size.width,
                       fit: BoxFit.contain,

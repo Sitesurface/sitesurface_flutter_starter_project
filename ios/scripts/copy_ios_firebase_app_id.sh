@@ -12,7 +12,7 @@ fi
 echo $environment
 
 # Name and path of the resource we're copying
-FIREBASE_APP_ID_JSON=firebase_app_id.json
+FIREBASE_APP_ID_JSON=firebase_app_id_file.json
 FIREBASE_APP_ID_FILE=${PROJECT_DIR}/config/${environment}/${FIREBASE_APP_ID_JSON}
 
 # Make sure firebase_app_id.json exists
@@ -24,7 +24,7 @@ exit 1
 fi
 
 # Get a reference to the destination location for the firebase_app_id.json
-DESTINATION=${PROJECT_DIR}/ios
+DESTINATION=${PROJECT_DIR}/${FIREBASE_APP_ID_JSON}
 echo "Will copy ${FIREBASE_APP_ID_JSON} to final destination: ${DESTINATION}"
 
 # Copy over the prod firebase_app_id.json for Release builds
@@ -33,19 +33,3 @@ cp "${FIREBASE_APP_ID_FILE}" "${DESTINATION}"
 
 
 
-
-
-# Name and path of the resource we're copying
-SCRIPT_FILE=copy_firebase_app_id.sh
-SCRIPT_PATH=${PROJECT_DIR}/scripts/${SCRIPT_FILE}
-
-# Make sure the script file exists
-echo "Looking for ${SCRIPT_FILE} in ${SCRIPT_PATH}"
-if [ ! -f $SCRIPT_PATH ]
-then
-echo "No ${SCRIPT_FILE} found. Please ensure it's in the proper directory."
-exit 1
-fi
-
-echo "Will run the ${SCRIPT_FILE} script."
-sh "${SCRIPT_PATH}"

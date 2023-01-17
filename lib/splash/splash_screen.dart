@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sitesurface_flutter_starter_project/constants/assets/icon_constants.dart';
+import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
 
 import '../../cache/shared_preferences.dart';
 import '../cache/prefs_constant.dart';
@@ -56,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
         return Scaffold(
           body: Center(
               child: Image.asset(
-            IconConstants.applogo,
+            AssetConstants.iconApplogo,
             height: 100,
             width: 100,
           )),

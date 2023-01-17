@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sitesurface_flutter_starter_project/cache/shared_preferences.dart';
 import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
 import 'package:sitesurface_flutter_starter_project/splash/splash_screen.dart';
-import 'package:sitesurface_flutter_starter_project/util/asset_helper/cache_img_helper.dart';
+import 'package:sitesurface_flutter_starter_project/util/asset_helper/asset_helper.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -35,12 +35,11 @@ class _DashboardState extends State<Dashboard> {
         child: Column(
           children: const [
             Text("Something"),
-            ImgHelper(
-              image: AssetConstants.applelogo,
+            AssetHelper(
+              image: AssetConstants.imageApplelogo,
               fit: BoxFit.cover,
               height: 200,
               width: 200,
-              showLoader: true,
             ),
           ],
         ),

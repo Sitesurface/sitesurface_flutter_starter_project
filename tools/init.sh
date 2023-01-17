@@ -1,0 +1,1 @@
+bundle_id=$(grep bundle_id config.yaml | awk '{print $2}')
