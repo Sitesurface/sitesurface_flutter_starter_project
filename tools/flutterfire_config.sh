@@ -35,5 +35,7 @@ configure_flutter_fire() {
     echo "----------$environment Configuration done ----------"
 }
 
-configure_flutter_fire "dev" "lib/flavors/config/firebase/firebase_options_dev.dart" "com.sitesurface.starter.dev" "com.sitesurface.starter.dev" "DevDefaultFirebaseOptions"
-configure_flutter_fire "prod" "lib/flavors/config/firebase/firebase_options_prod.dart" "com.sitesurface.starter" "com.sitesurface.starter" "ProdDefaultFirebaseOptions"
+new_bundle_id=$(grep bundle_id config.yaml | awk '{print $2}')
+
+configure_flutter_fire "dev" "lib/flavors/config/firebase/firebase_options_dev.dart" "$new_bundle_id.dev" "$new_bundle_id.dev" "DevDefaultFirebaseOptions"
+configure_flutter_fire "prod" "lib/flavors/config/firebase/firebase_options_prod.dart" "$new_bundle_id" "$new_bundle_id" "ProdDefaultFirebaseOptions"

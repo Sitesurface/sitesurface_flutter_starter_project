@@ -83,11 +83,11 @@ android {
         dev {
             flavorDimensions "app"
             applicationIdSuffix ".dev"
-            resValue "string", "app_name", "dev flutter_starter"
+            resValue "string", "app_name", "Dev Sitesurface"
         }
         prod {
             flavorDimensions "app"
-            resValue "string", "app_name", "flutter_starter"
+            resValue "string", "app_name", "Sitesurface"
         }
     }
 }

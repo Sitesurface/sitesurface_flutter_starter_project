@@ -1,4 +1,2 @@
-dev_bundle_id: com.sitesurface.starter.dev
-dev_app_name: Dev Sitesurface
-prod_bundle_id: com.sitesurface.starter
-prod_app_name: Sitesurface
+bundle_id: com.sitesurface.starter
+app_name: Sitesurface
