@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sitesurface_flutter_starter_project/l10n/l10n.dart';
-import 'package:sitesurface_flutter_starter_project/styles/theme/theme_ext.dart';
+import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
+import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
-import '../../../constants/assets/asset_constants.dart';
-import '../../../util/asset_helper/asset_helper.dart';
-import '../../../widgets/buttons/rounded_button.dart';
+import '../../../../constants/assets/asset_constants.dart';
+import '../../../../util/asset_helper/asset_helper.dart';
+import '../../../../widgets/buttons/rounded_button.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_state.dart';
 

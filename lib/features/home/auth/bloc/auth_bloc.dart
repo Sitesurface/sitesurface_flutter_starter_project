@@ -11,10 +11,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
-import '../../../cache/prefs_constant.dart';
-import '../../../cache/shared_preferences.dart';
-import '../../../main.dart';
-import '../../../util/bot_toast/bot_toast_functions.dart';
+import '../../../../cache/prefs_constant.dart';
+import '../../../../cache/shared_preferences.dart';
+import '../../../../main.dart';
+import '../../../../util/bot_toast/bot_toast_functions.dart';
 import '../view/login_screen.dart';
 import 'auth_state.dart';
 

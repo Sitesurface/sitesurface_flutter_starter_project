@@ -4,24 +4,24 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/phone_number.dart';
-import 'package:sitesurface_flutter_starter_project/l10n/l10n.dart';
-import 'package:sitesurface_flutter_starter_project/styles/theme/theme_ext.dart';
+import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
+import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
-import '../../../cache/prefs_constant.dart';
-import '../../../cache/shared_preferences.dart';
-import '../../../constants/assets/asset_constants.dart';
-import '../../../util/asset_helper/asset_helper.dart';
-import '../../../util/validators.dart';
-import '../../../widgets/buttons/rounded_button.dart';
-import '../../../widgets/text_form_field/phone_text_field.dart';
-import '../../../widgets/webview_screen.dart';
+import '../../../../cache/prefs_constant.dart';
+import '../../../../cache/shared_preferences.dart';
+import '../../../../constants/assets/asset_constants.dart';
+import '../../../../util/asset_helper/asset_helper.dart';
+import '../../../../util/validators.dart';
+import '../../../../widgets/buttons/rounded_button.dart';
+import '../../../../widgets/text_form_field/phone_text_field.dart';
+import '../../../../widgets/webview_screen.dart';
 import '../../dashboard/dashboard.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_state.dart';
 import '../widgets/social_buttons.dart';
-import '../../../widgets/text_form_field/text_field_header.dart';
-import '../../../widgets/text_form_field/text_form_field.dart';
+import '../../../../widgets/text_form_field/text_field_header.dart';
+import '../../../../widgets/text_form_field/text_form_field.dart';
 import 'otp_screen.dart';
 
 class LoginScreen extends StatefulWidget {

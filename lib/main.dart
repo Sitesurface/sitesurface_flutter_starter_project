@@ -10,7 +10,7 @@ import 'cache/shared_preferences.dart';
 import 'flavors/config/flavor_config.dart';
 import 'routes/route_helper.dart';
 import 'helpers/firebase/crashlytics_helper.dart';
-import 'splash/splash_screen.dart';
+import 'features/home/splash/splash_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'styles/theme/dark_theme.dart';

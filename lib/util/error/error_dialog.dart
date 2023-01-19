@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sitesurface_flutter_starter_project/styles/theme/theme_ext.dart';
+import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
 
 Future<void> showErrorDialog(BuildContext context, String message) async {
   final colorScheme = context.colorScheme;

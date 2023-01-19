@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/features/auth/bloc/auth_bloc.dart';
-import 'package:sitesurface_flutter_starter_project/features/auth/view/otp_screen.dart';
+import 'package:sitesurface_flutter_starter_project/features/home/auth/bloc/auth_bloc.dart';
+import 'package:sitesurface_flutter_starter_project/features/home/auth/view/otp_screen.dart';
 import '../constants/assets/asset_constants.dart';
-import '../features/auth/view/login_screen.dart';
-import '../features/dashboard/dashboard.dart';
-import '../features/onboarding/view/onboarding_screens.dart';
-import '../l10n/l10n.dart';
-import '../splash/splash_screen.dart';
+import '../features/home/auth/view/login_screen.dart';
+import '../features/home/dashboard/dashboard.dart';
+import '../features/home/onboarding/view/onboarding_screens.dart';
+import '../util/extentions/extensions.dart';
+import '../features/home/splash/splash_screen.dart';
 import '../util/error/error_screen.dart';
 import '../widgets/webview_screen.dart';
 

@@ -1,11 +1,11 @@
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sitesurface_flutter_starter_project/l10n/l10n.dart';
-import 'package:sitesurface_flutter_starter_project/styles/theme/theme_ext.dart';
+import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
+import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
 
-import '../../../cache/prefs_constant.dart';
-import '../../../cache/shared_preferences.dart';
+import '../../../../cache/prefs_constant.dart';
+import '../../../../cache/shared_preferences.dart';
 import '../../auth/view/login_screen.dart';
 import '../data/onboard_data.dart';
 import '../widget/onboard_widget.dart';
