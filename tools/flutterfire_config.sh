@@ -22,7 +22,6 @@ configure_flutter_fire() {
     
     echo "Configuring FlutterFire for iOS and Android for $environment environment"
     flutterfire configure --project=sitesurface-flutter-starter --platforms=ios,android --android-package-name=$package_name --ios-bundle-id=$bundle_id --yes --out=$out_file
-    flutter pub run build_runner build --delete-conflicting-outputs
     
     echo "Renaming class DefaultFirebaseOptions to $class_name in $out_file"
     sed -i '' "s/DefaultFirebaseOptions/$class_name/g" $out_file

@@ -1,5 +1,3 @@
-
-
 # Read bundle ID from config.yaml file
 echo "Reading values from config.yaml file"
 
@@ -77,10 +75,8 @@ echo "-----------------Names Updated -----------------"
 
 echo "-----------------Starting Firebase Setup-----------------" 
 #Running flutterfire_config.sh
-sh flutterfire_config.sh
+sh tools/flutterfire_config.sh
 
 echo "-----------------Firebase Setup Completed-----------------"
-
-
 
 

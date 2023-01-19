@@ -63,6 +63,7 @@ class ProdDefaultFirebaseOptions {
     messagingSenderId: '570560561302',
     projectId: 'sitesurface-flutter-starter',
     storageBucket: 'sitesurface-flutter-starter.appspot.com',
+    androidClientId: '570560561302-aj917fkgjfdngcj4hpluu9tpbijtcovr.apps.googleusercontent.com',
     iosClientId: '570560561302-0a655kbo8g85uh4glamd5kdbame1ah4h.apps.googleusercontent.com',
     iosBundleId: 'com.sitesurface.starter',
   );

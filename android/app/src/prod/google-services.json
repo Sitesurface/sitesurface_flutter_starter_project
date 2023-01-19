@@ -50,6 +50,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "570560561302-aj917fkgjfdngcj4hpluu9tpbijtcovr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sitesurface.starter.dev",
+            "certificate_hash": "f491bafe9b3047a528e4cacfdce48c5dc9bf2109"
+          }
+        },
+        {
           "client_id": "570560561302-agepg312pfglgccr1fme7napb972uib0.apps.googleusercontent.com",
           "client_type": 3
         }
