@@ -19,17 +19,10 @@ extension Pallet on ColorScheme {
   static const Color primary = Color(0xff8C3EFF);
   static const Color secondary = Color.fromARGB(255, 150, 138, 90);
   static const whiteBackground = Color(0xfff9f9f9);
-  static const whiteBackground2 = Color(0xfff1f5fb);
-  static const blueBackground = Color(0xFF4d6cd5);
-  static const blueBackground2 = Color(0xFF6984dd);
-  static const blueBackground3 = Color(0xff4762C6);
-  static const redBackground = Color(0xffee908b);
-  static const redBackground2 = Color(0xffF1E8C9);
 
   static Color? blackBackground = Colors.grey[850];
 
   Color get grey => brightness == Brightness.dark ? Colors.grey : Colors.grey;
-  Color get red => brightness == Brightness.dark ? Colors.red : Colors.red;
   Color get lightGrey => brightness == Brightness.dark
       ? const Color(0xff5A5A5A)
       : const Color(0xffF7F6F9);
@@ -38,6 +31,4 @@ extension Pallet on ColorScheme {
       brightness == Brightness.dark ? const Color(0xff292929) : Colors.white;
   Color? get black =>
       brightness == Brightness.dark ? Colors.white : Colors.grey[900];
-  Color get green => Colors.greenAccent;
-  static const Color greenVar2 = Colors.green;
 }

@@ -13,8 +13,8 @@ import 'helpers/firebase/crashlytics_helper.dart';
 import 'splash/splash_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'util/styles/theme/dark_theme.dart';
-import 'util/styles/theme/light_theme.dart';
+import 'styles/theme/dark_theme.dart';
+import 'styles/theme/light_theme.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 

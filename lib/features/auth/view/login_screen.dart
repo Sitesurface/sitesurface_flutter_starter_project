@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/phone_number.dart';
 import 'package:sitesurface_flutter_starter_project/l10n/l10n.dart';
-import 'package:sitesurface_flutter_starter_project/util/styles/theme/theme_ext.dart';
+import 'package:sitesurface_flutter_starter_project/styles/theme/theme_ext.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../../cache/prefs_constant.dart';

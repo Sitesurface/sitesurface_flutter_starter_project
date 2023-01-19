@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../util/styles/colors/pallet.dart';
+import '../../styles/colors/pallet.dart';
 
 class DropdownTextField extends StatefulWidget {
   final void Function(String?) onChanged;

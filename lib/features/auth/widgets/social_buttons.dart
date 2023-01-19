@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/util/styles/theme/theme_ext.dart';
+import 'package:sitesurface_flutter_starter_project/styles/theme/theme_ext.dart';
 
 class SocialButton extends StatelessWidget {
   const SocialButton({
