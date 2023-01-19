@@ -46,7 +46,7 @@ class _NotificationHandlerState extends State<NotificationHandler> {
             android: AndroidNotificationDetails(
               "high_importance_channel",
               "High Importance Notifications",
-              icon: '@mipmap/launcher_icon',
+              icon: '@mipmap/ic_launcher',
             ),
           ),
           payload: jsonEncode(event.data));

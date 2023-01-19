@@ -29,10 +29,15 @@ class ImagePickerHelper {
     return imageFileList;
   }
 
-  Future<File?> pickImage({ImageSource? imgSource}) async {
+  Future<File?> pickImage(BuildContext context,
+      {ImageSource? imgSource}) async {
+    if (imgSource == null && source == null) {
+      await _showImageSourceDialog(context);
+    }
     if (imgSource == null && source == null) {
       return null;
     }
+
     try {
       final XFile? image = await _picker.pickImage(
           source: imgSource ?? source!, maxHeight: 500, maxWidth: 500);
@@ -58,7 +63,7 @@ class ImagePickerHelper {
     return base64String;
   }
 
-  Future<void> showImageSourceDialog(BuildContext context) async {
+  Future<void> _showImageSourceDialog(BuildContext context) async {
     //show bottom sheet to select camera or gallery
     await showModalBottomSheet(
         context: context,
