@@ -27,7 +27,7 @@ Future mainCommon() async {
     }
     RemoteConfigHelper.setConfigSettings();
 
-    runApp(const MyApp());
+    runApp(MyApp());
   }, (error, stack) {
     if (FlavorConfig.instance.buildFlavor == BuildFlavor.prod) {
       CrashlyticsHelper.recordError(error, stack);
@@ -36,7 +36,8 @@ Future mainCommon() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final routeHelper = RouteHelper();
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: theme,
-        onGenerateRoute: RouteHelper.generateRoute,
+        onGenerateRoute: routeHelper.getRoutes,
         initialRoute: SplashScreen.id,
         onUnknownRoute: (settings) =>
             MaterialPageRoute(builder: (context) => const ErrorScreen()),
