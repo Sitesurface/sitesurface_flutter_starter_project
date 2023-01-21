@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../colors/pallet.dart';
-import 'themes/app_bar_theme.dart';
-import 'themes/text_theme.dart';
 
 ThemeData darkTheme = ThemeData(
   primaryColor: Pallet.primary,
@@ -17,6 +16,14 @@ ThemeData darkTheme = ThemeData(
       ),
     ),
   ),
-  textTheme: darkTextTheme,
-  appBarTheme: darkAppBarTheme,
+  textTheme: _darkTextTheme,
+  appBarTheme: _darkAppBarTheme,
 );
+
+TextTheme _darkTextTheme =
+    GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme);
+
+AppBarTheme _darkAppBarTheme = ThemeData.dark().appBarTheme.copyWith(
+    backgroundColor: Pallet.blackBackground,
+    elevation: 0,
+    foregroundColor: Colors.white);

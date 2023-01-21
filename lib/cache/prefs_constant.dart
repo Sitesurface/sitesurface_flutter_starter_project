@@ -6,4 +6,5 @@ class PrefConstant {
   static String language = "language";
   static String latitude = "latitude";
   static String longitude = "longitude";
+  static String skippedVersion = "skipped_version";
 }
