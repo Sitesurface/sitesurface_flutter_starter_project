@@ -1,4 +1,3 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,7 @@ import 'config/flavor_config.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FlavorConfig().setupFlavor(flavorConfig: BuildFlavor.dev);
-        await Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DevDefaultFirebaseOptions.currentPlatform,
   );
 

@@ -2,9 +2,13 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:sitesurface_flutter_starter_project/flavors/config/build_flavor.dart';
+import 'package:sitesurface_flutter_starter_project/helpers/handlers/locale_handler.dart';
+import 'package:sitesurface_flutter_starter_project/helpers/packages/package_info_helper.dart';
 import '../cache/shared_preferences.dart';
 import '../flavors/config/flavor_config.dart';
 import '../util/bot_toast/bot_toast_functions.dart';
@@ -21,13 +25,22 @@ class ApiHelper {
   /// Function used for getting header for the http call.
   static Future<Map<String, String>?> getHeader() async {
     var token = await FirebaseAuth.instance.currentUser?.getIdToken();
+
     if (token != null) {
       _pref.setString("token", token);
     }
     Map<String, String>? header = {
       "Authorization": "Bearer $token",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "X-Platform": Platform.operatingSystem,
+      "X-App-Version": PackageInfoHelper.instance.packageInfo?.version ?? "",
+      "X-Environment": FlavorConfig.instance.buildFlavor.toString(),
+      "X-Locale": LocaleHandler.getLocale().toLanguageTag(),
     };
+    if (BuildFlavor.prod == FlavorConfig.instance.buildFlavor) {
+      var firebaseToken = (await FirebaseAppCheck.instance.getToken()) ?? "";
+      header.addAll({"X-App-Check": firebaseToken});
+    }
     return header;
   }
 

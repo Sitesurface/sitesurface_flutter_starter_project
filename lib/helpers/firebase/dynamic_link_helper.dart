@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:sitesurface_flutter_starter_project/main.dart';
 
 import '../../flavors/config/flavor_config.dart';
+import '../handlers/action_handler.dart';
 
 /// This class is used to handle the deep link.
-/// It will check the deep link and open the post details screen.
 class DynamicLinkHelper {
   /// This function is used to create the dynamic link using firebase dynamic links.
   static Future<String?> createDynamicLink({required Uri link}) async {
@@ -50,27 +50,5 @@ class DynamicLinkHelper {
     }).onError((error) {
       debugPrint(error);
     });
-  }
-}
-
-class ActionHandler {
-  static void handle(dynamic args) {
-    try {
-      if (args is Map<String, dynamic>) {
-        if (args["action"] == "screen") {
-          Navigator.pushNamed(
-              navigatorKey.currentState!.context, args["screen"],
-              arguments: args);
-        }
-      } else if (args is Uri) {
-        if (args.queryParameters["action"] == "screen") {
-          Navigator.pushNamed(navigatorKey.currentState!.context,
-              args.queryParameters["screen"]!,
-              arguments: args.queryParameters);
-        }
-      }
-    } catch (e) {
-      debugPrint(e.toString());
-    }
   }
 }

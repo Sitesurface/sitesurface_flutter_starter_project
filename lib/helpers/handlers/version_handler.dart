@@ -41,7 +41,8 @@ class _VersionHandlerState extends State<VersionHandler> {
               .get())
           .data()!["version"][Platform.isAndroid ? "android" : "ios"];
 
-      var currentVersion = (await PackageInfoHelper.getPackageInfo()).version;
+      var currentVersion =
+          PackageInfoHelper.instance.packageInfo?.version ?? "";
       var skippedVersion = _pref.getString(PrefConstant.skippedVersion);
 
       var splitCurrentVersion = currentVersion.split('.');
