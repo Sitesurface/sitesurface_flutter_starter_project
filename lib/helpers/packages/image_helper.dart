@@ -7,9 +7,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sitesurface_flutter_starter_project/styles/colors/pallet.dart';
 
-class ImagePickerHelper {
+class ImageHelper {
   final ImagePicker _picker = ImagePicker();
-  static ImageSource? source;
+  static ImageSource? _source;
 
   Future<List<File>> pickMultiImage() async {
     List<File> imageFileList = [];
@@ -31,17 +31,17 @@ class ImagePickerHelper {
 
   Future<File?> pickImage(BuildContext context,
       {ImageSource? imgSource}) async {
-    if (imgSource == null && source == null) {
+    if (imgSource == null && _source == null) {
       await _showImageSourceDialog(context);
     }
-    if (imgSource == null && source == null) {
+    if (imgSource == null && _source == null) {
       return null;
     }
 
     try {
       final XFile? image = await _picker.pickImage(
-          source: imgSource ?? source!, maxHeight: 500, maxWidth: 500);
-      source = null;
+          source: imgSource ?? _source!, maxHeight: 500, maxWidth: 500);
+      _source = null;
       if (image != null) {
         return File(image.path);
       }
@@ -87,7 +87,7 @@ class ImagePickerHelper {
                         "Camera",
                       ),
                       onTap: () async {
-                        source = ImageSource.camera;
+                        _source = ImageSource.camera;
                         Navigator.pop(context);
                       },
                     ),
@@ -100,7 +100,7 @@ class ImagePickerHelper {
                         "Gallery",
                       ),
                       onTap: () async {
-                        source = ImageSource.gallery;
+                        _source = ImageSource.gallery;
                         Navigator.pop(context);
                       },
                     ),

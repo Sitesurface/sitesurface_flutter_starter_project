@@ -67,16 +67,11 @@ echo "Updated app name at ios/Flutter/Release-prod.xcconfig file"
 
 # Update lib/flavors/config/flavor_config.dart
 echo "Updating appName at lib/flavors/config/flavor_config.dart file"
-sed -i '' "s/appName = 'Dev.*';/appName = 'Dev $new_app_name';/" lib/flavors/config/flavor_config.dart
-sed -i '' "s/appName = '.*[^Dev]';/appName = '$new_app_name';/" lib/flavors/config/flavor_config.dart
+sed -i '' "s/appName = \"Dev.*\";/appName = \"Dev $new_app_name';/" lib/flavors/config/flavor_config.dart
+sed -i '' "s/appName = \".*[^Dev]\";/appName = \"$new_app_name\";/" lib/flavors/config/flavor_config.dart
 echo "Updated appName at lib/flavors/config/flavor_config.dart file"
 
 echo "-----------------Names Updated -----------------"
 
-echo "-----------------Starting Firebase Setup-----------------" 
-#Running flutterfire_config.sh
-sh tools/flutterfire_config.sh
-
-echo "-----------------Firebase Setup Completed-----------------"
 
 

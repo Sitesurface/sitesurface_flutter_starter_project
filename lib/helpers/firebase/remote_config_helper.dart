@@ -9,4 +9,8 @@ class RemoteConfigHelper {
       minimumFetchInterval: const Duration(hours: 1),
     ));
   }
+
+  static setDefaults(Map<String, dynamic> defaults) {
+    _remoteConfig.setDefaults(defaults);
+  }
 }

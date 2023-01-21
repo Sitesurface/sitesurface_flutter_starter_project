@@ -1,6 +1,8 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/firebase/dynamic_link_helper.dart';
 
+import '../firebase/remote_config_helper.dart';
+
 class CommonHandler extends StatefulWidget {
   const CommonHandler({super.key, required this.child});
   final Widget child;
@@ -14,6 +16,13 @@ class _CommonHandlerState extends State<CommonHandler> {
     //Dynamic Links
     DynamicLinkHelper.addFirebaseDynamicLinkListener();
     DynamicLinkHelper.initDynamicLink();
+
+    // Default remote config values
+    RemoteConfigHelper.setDefaults(const {
+      "maintenance_mode": false,
+      "version": "1.0.0",
+    });
+
     super.initState();
   }
 
