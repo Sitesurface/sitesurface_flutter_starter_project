@@ -7,7 +7,7 @@ new_app_name=$(grep app_name config.yaml | awk '{print $2}')
 echo "-----------------Updating Bundle Id -----------------"
 # Update android/app/build.gradle file
 echo "Updating bundle id at android/app/build.gradle file"
-sed -i '' "s/applicationId \".*\"/applicationId \"$new_bundle_id\"/" android/app/build.gradle
+awk -v new_bundle_id="$new_bundle_id" '{gsub(/applicationId ".*"/, "applicationId \""new_bundle_id"\"")}1' android/app/build.gradle > android/app/build.gradle.tmp && mv android/app/build.gradle.tmp android/app/build.gradle
 echo "Updated bundle id at android/app/build.gradle file"
 
 # Update ios/Flutter/Debug-dev.xcconfig

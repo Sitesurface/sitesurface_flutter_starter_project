@@ -24,7 +24,7 @@ class AssetHelper extends StatelessWidget {
   final bool showLoader;
 
   Widget errorImageWidget() => Image.asset(
-        AssetConstants.iconApplogo,
+        AssetConstants.iconAppLogo,
         height: height,
         width: width,
         fit: fit ?? BoxFit.cover,

@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 
 import 'package:sitesurface_flutter_starter_project/cache/prefs_constant.dart';
 import 'package:sitesurface_flutter_starter_project/cache/shared_preferences.dart';
+import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/packages/package_info_helper.dart';
+import 'package:sitesurface_flutter_starter_project/widgets/screens/permission_widget.dart';
 
 class VersionHandler extends StatefulWidget {
   const VersionHandler({super.key, required this.child});
@@ -97,6 +99,6 @@ class _UpdateScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return PermissionWidget(image: AssetConstants.lottieUpdateAvailable);
   }
 }

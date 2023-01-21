@@ -36,7 +36,7 @@ class _DashboardState extends State<Dashboard> {
           children: const [
             Text("Something"),
             AssetHelper(
-              image: AssetConstants.imageApplelogo,
+              image: AssetConstants.imageAppleLogo,
               fit: BoxFit.cover,
               height: 200,
               width: 200,

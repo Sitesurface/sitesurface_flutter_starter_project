@@ -241,28 +241,28 @@ class _LoginScreenState extends State<LoginScreen> {
                             Row(
                               children: [
                                 SocialButton(
-                                  assetName: AssetConstants.imageGooglelogo,
+                                  assetName: AssetConstants.imageGoogleLogo,
                                   onPressed: () async {
                                     await authBloc.googleLogin();
                                   },
                                 ),
                                 SocialButton(
-                                  assetName: AssetConstants.imageFacebooklogo,
+                                  assetName: AssetConstants.imageFacebookLogo,
                                   onPressed: () async {
                                     await authBloc.signInWithFacebook();
                                   },
                                 ),
                                 if (Platform.isIOS)
                                   SocialButton(
-                                    assetName: AssetConstants.imageApplelogo,
+                                    assetName: AssetConstants.imageAppleLogo,
                                     onPressed: () async {
                                       await authBloc.appleSignin();
                                     },
                                   ),
                                 SocialButton(
                                   assetName: isEmailSignIn
-                                      ? AssetConstants.imagePhonelogo
-                                      : AssetConstants.imageEmaillogo,
+                                      ? AssetConstants.imagePhoneLogo
+                                      : AssetConstants.imageEmailLogo,
                                   onPressed: () {
                                     setState(() {
                                       isEmailSignIn = !isEmailSignIn;

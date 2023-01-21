@@ -56,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
         return Scaffold(
           body: Center(
               child: Image.asset(
-            AssetConstants.iconApplogo,
+            AssetConstants.iconAppLogo,
             height: 100,
             width: 100,
           )),
