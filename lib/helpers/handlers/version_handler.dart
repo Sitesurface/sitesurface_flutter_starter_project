@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'package:sitesurface_flutter_starter_project/cache/prefs_constant.dart';
-import 'package:sitesurface_flutter_starter_project/cache/shared_preferences.dart';
-import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
-import 'package:sitesurface_flutter_starter_project/helpers/packages/package_info_helper.dart';
-import 'package:sitesurface_flutter_starter_project/main.dart';
-import 'package:sitesurface_flutter_starter_project/widgets/screens/permission_widget.dart';
+import '../../cache/prefs_constant.dart';
+import '../../cache/shared_preferences.dart';
+import '../../constants/assets/asset_constants.dart';
+import '../packages/package_info_helper.dart';
+import '../../main.dart';
+import '../../widgets/screens/permission_widget.dart';
 
 class VersionHandler extends StatefulWidget {
   const VersionHandler({super.key, required this.child});

@@ -1,7 +1,7 @@
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/helpers/packages/package_info_helper.dart';
-import 'package:sitesurface_flutter_starter_project/main.dart';
+import '../packages/package_info_helper.dart';
+import '../../main.dart';
 
 import '../../flavors/config/flavor_config.dart';
 import '../handlers/action_handler.dart';

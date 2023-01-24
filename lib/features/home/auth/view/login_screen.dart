@@ -4,8 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/phone_number.dart';
-import 'package:sitesurface_flutter_starter_project/widgets/dialog/custom_dialog.dart';
-import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
+import '../../../../widgets/dialog/custom_dialog.dart';
+import '../../../../util/extentions/extensions.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../../../cache/prefs_constant.dart';

@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
-import 'package:sitesurface_flutter_starter_project/main.dart';
-import 'package:sitesurface_flutter_starter_project/util/date/date_helper.dart';
-import 'package:sitesurface_flutter_starter_project/widgets/screens/permission_widget.dart';
+import '../../constants/assets/asset_constants.dart';
+import '../../main.dart';
+import '../../util/date/date_helper.dart';
+import '../../widgets/screens/permission_widget.dart';
 
 class MaintenanceModeHandler extends StatefulWidget {
   const MaintenanceModeHandler({super.key, required this.child});

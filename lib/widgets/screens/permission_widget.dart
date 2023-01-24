@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/util/asset_helper/asset_helper.dart';
-import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
-import 'package:sitesurface_flutter_starter_project/widgets/buttons/rounded_button.dart';
+import '../../util/asset_helper/asset_helper.dart';
+import '../../util/extentions/extensions.dart';
+import '../buttons/rounded_button.dart';
 
 class PermissionWidget extends StatelessWidget {
   final String image;

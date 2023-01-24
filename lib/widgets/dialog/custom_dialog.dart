@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
-import 'package:sitesurface_flutter_starter_project/util/asset_helper/asset_helper.dart';
-import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
+import '../../constants/assets/asset_constants.dart';
+import '../../util/asset_helper/asset_helper.dart';
+import '../../util/extentions/extensions.dart';
 
 Future<void> showCustomDialog({
   required BuildContext context,

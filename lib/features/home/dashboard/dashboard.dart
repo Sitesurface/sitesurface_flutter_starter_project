@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/cache/shared_preferences.dart';
-import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
-import 'package:sitesurface_flutter_starter_project/features/home/splash/splash_screen.dart';
-import 'package:sitesurface_flutter_starter_project/util/asset_helper/asset_helper.dart';
+import '../../../cache/shared_preferences.dart';
+import '../../../constants/assets/asset_constants.dart';
+import '../splash/splash_screen.dart';
+import '../../../util/asset_helper/asset_helper.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});

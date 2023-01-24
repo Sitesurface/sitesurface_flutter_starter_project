@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/features/home/auth/bloc/auth_bloc.dart';
-import 'package:sitesurface_flutter_starter_project/features/home/auth/view/otp_screen.dart';
-import 'package:sitesurface_flutter_starter_project/routes/base_route_helper.dart';
+import '../features/home/auth/bloc/auth_bloc.dart';
+import '../features/home/auth/view/otp_screen.dart';
+import 'base_route_helper.dart';
 import '../features/home/auth/view/login_screen.dart';
 import '../features/home/dashboard/dashboard.dart';
 import '../features/home/onboarding/view/onboarding_screens.dart';

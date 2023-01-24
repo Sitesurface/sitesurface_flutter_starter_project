@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
+import '../../../../util/extentions/extensions.dart';
 
 class OnboardWidget {
   final String title;

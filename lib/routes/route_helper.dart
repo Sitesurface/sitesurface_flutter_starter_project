@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/routes/common_routes.dart';
+import 'common_routes.dart';
 
 class RouteHelper {
   final commonRoutes = CommonRoutes();

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sitesurface_flutter_starter_project/styles/colors/pallet.dart';
+import '../../styles/colors/pallet.dart';
 
 class ImageHelper {
   final ImagePicker _picker = ImagePicker();

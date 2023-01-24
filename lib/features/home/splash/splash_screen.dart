@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
-import 'package:sitesurface_flutter_starter_project/util/asset_helper/asset_helper.dart';
+import '../../../constants/assets/asset_constants.dart';
+import '../../../util/asset_helper/asset_helper.dart';
 
 import '../../../../cache/shared_preferences.dart';
 import '../../../cache/prefs_constant.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sitesurface_flutter_starter_project/util/asset_helper/asset_helper.dart';
+import '../../util/asset_helper/asset_helper.dart';
 
 import '../../constants/assets/asset_constants.dart';
 

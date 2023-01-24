@@ -6,9 +6,9 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:sitesurface_flutter_starter_project/flavors/config/build_flavor.dart';
-import 'package:sitesurface_flutter_starter_project/helpers/handlers/locale_handler.dart';
-import 'package:sitesurface_flutter_starter_project/helpers/packages/package_info_helper.dart';
+import '../flavors/config/build_flavor.dart';
+import '../helpers/handlers/locale_handler.dart';
+import '../helpers/packages/package_info_helper.dart';
 import '../cache/shared_preferences.dart';
 import '../flavors/config/flavor_config.dart';
 import '../util/bot_toast/bot_toast_functions.dart';

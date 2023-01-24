@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
-import 'package:sitesurface_flutter_starter_project/styles/colors/pallet.dart';
+import '../../constants/assets/asset_constants.dart';
+import '../../styles/colors/pallet.dart';
 
 /// Send either Network image , file path , lottie or asset image
 class AssetHelper extends StatelessWidget {
