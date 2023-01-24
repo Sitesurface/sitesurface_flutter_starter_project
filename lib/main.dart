@@ -2,14 +2,11 @@ import 'dart:async';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sitesurface_flutter_starter_project/flavors/config/build_flavor.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/handlers/multi_handler.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/packages/package_info_helper.dart';
 import 'cache/shared_preferences.dart';
-import 'flavors/config/flavor_config.dart';
 import 'routes/error_route_screen.dart';
 import 'routes/route_helper.dart';
-import 'helpers/firebase/crashlytics_helper.dart';
 import 'features/home/splash/splash_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

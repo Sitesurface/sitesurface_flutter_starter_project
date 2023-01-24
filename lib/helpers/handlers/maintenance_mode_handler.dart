@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'package:sitesurface_flutter_starter_project/cache/shared_preferences.dart';
 import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
 import 'package:sitesurface_flutter_starter_project/main.dart';
 import 'package:sitesurface_flutter_starter_project/util/date/date_helper.dart';
@@ -18,8 +17,6 @@ class MaintenanceModeHandler extends StatefulWidget {
 }
 
 class _MaintenanceModeHandlerState extends State<MaintenanceModeHandler> {
-  final _pref = Pref.instance.pref;
-
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {

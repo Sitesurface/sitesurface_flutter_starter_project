@@ -1,5 +1,6 @@
 class Repo {
   /// Create map and return only those fields that are not null
+  // ignore: unused_element
   Map<String, dynamic> _removeNull(dynamic object) {
     Map<String, dynamic> map = {};
     map.addAll(object.toJson());
