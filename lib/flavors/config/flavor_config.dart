@@ -26,8 +26,6 @@ class FlavorConfig {
         {
           buildFlavor = BuildFlavor.dev;
           baseUrl = '';
-          appName = "Dev Sitesurface";
-          packageName = 'com.sitesurface.starter.dev';
           dynamicLink = '';
           appStoreId = '';
         }
