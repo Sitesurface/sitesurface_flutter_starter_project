@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
+import 'package:sitesurface_flutter_starter_project/util/asset_helper/asset_helper.dart';
 
 import '../../../../cache/shared_preferences.dart';
 import '../../../cache/prefs_constant.dart';
@@ -53,10 +54,10 @@ class _SplashScreenState extends State<SplashScreen> {
           Future.delayed(Duration.zero,
               () => Navigator.pushReplacementNamed(context, snapshot.data!));
         }
-        return Scaffold(
+        return const Scaffold(
           body: Center(
-              child: Image.asset(
-            AssetConstants.iconAppLogo,
+              child: AssetHelper(
+            image: AssetConstants.iconAppLogo,
             height: 100,
             width: 100,
           )),

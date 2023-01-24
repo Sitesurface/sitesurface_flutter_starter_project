@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:sitesurface_flutter_starter_project/cache/shared_preferences.dart';
 import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
 import 'package:sitesurface_flutter_starter_project/main.dart';
+import 'package:sitesurface_flutter_starter_project/util/date/date_helper.dart';
 import 'package:sitesurface_flutter_starter_project/widgets/screens/permission_widget.dart';
 
 class MaintenanceModeHandler extends StatefulWidget {
@@ -32,35 +33,41 @@ class _MaintenanceModeHandlerState extends State<MaintenanceModeHandler> {
     return widget.child;
   }
 
-  Future<bool> _getMaintenanceUpdate() async {
+  static Future<String?> getMaintenanceUpdate() async {
     try {
-      var maintenanceUpdate = (await FirebaseFirestore.instance
+      var maintenance = (await FirebaseFirestore.instance
               .collection("constants")
               .doc("constants")
               .get())
-          .data()!["maintenance_mode"][Platform.isAndroid ? "android" : "ios"];
-      if (maintenanceUpdate != null) {
-        return maintenanceUpdate;
+          .data()!["maintenance"];
+      if (maintenance != null &&
+          maintenance[Platform.isAndroid ? "android" : "ios"]) {
+        var endDate = DateHelper.getDateFromString(maintenance["end_date"]);
+        return endDate;
       }
     } catch (e) {
       debugPrint(e.toString());
     }
-    return false;
+    return null;
   }
 
-  Future<void> _checkMaintenanceMode() async {
-    var maintenanceMode = await _getMaintenanceUpdate();
-    maintenanceMode = true;
-    if (maintenanceMode) {
+  static Future<void> _checkMaintenanceMode() async {
+    var maintenanceModeEndDate = await getMaintenanceUpdate();
+
+    if (maintenanceModeEndDate != null) {
       Navigator.of(navigatorKey.currentState!.context).push(MaterialPageRoute(
-          builder: (context) => const _MaintenanceModeScreen()));
+          builder: (context) => _MaintenanceModeScreen(
+                endDate: maintenanceModeEndDate,
+              )));
     }
   }
 }
 
 class _MaintenanceModeScreen extends StatelessWidget {
+  final String? endDate;
   const _MaintenanceModeScreen({
     Key? key,
+    required this.endDate,
   }) : super(key: key);
 
   @override
@@ -69,7 +76,7 @@ class _MaintenanceModeScreen extends StatelessWidget {
       image: AssetConstants.lottieMaintenance,
       title: "Maintenance in Progress",
       subtitle:
-          "We're currently performing maintenance on our servers. Please check back later for an improved experience.",
+          "We're currently performing maintenance on our servers. Please check back later for an improved experience.\n\n\nEstimated Maintenance End Date: $endDate",
       allowBack: false,
       primaryButtonLabel: "OK",
       onPrimaryButtonTapped: () {},

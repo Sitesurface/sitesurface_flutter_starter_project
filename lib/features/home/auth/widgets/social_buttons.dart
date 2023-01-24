@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
 
+import '../../../../util/asset_helper/asset_helper.dart';
+
 class SocialButton extends StatelessWidget {
   const SocialButton({
     Key? key,
@@ -25,8 +27,8 @@ class SocialButton extends StatelessWidget {
             border: Border.all(color: colorScheme.primary),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Image.asset(
-            assetName,
+          child: AssetHelper(
+            image: assetName,
             fit: BoxFit.contain,
           ),
         ),

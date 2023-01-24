@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
 
 import 'package:sitesurface_flutter_starter_project/styles/colors/pallet.dart';
+import 'package:sitesurface_flutter_starter_project/util/asset_helper/asset_helper.dart';
 import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
 
 class InternetHandler extends StatefulWidget {
@@ -90,9 +92,7 @@ class _NoNetworkState extends State<_NoNetwork> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  "assets/images/no_network.png",
-                ),
+                const AssetHelper(image: AssetConstants.imageNoNetwork),
                 const SizedBox(
                   height: 15,
                 ),

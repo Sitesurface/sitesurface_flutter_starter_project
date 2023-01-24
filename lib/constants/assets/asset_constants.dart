@@ -7,6 +7,7 @@ class AssetConstants {
   static const imageNoNetwork = "assets/images/no_network.png";
   static const imagePhoneLogo = "assets/images/phone_logo.png";
   static const iconAppLogo = "assets/icons/app_logo.png";
+  static const iconEmptyData = "assets/icons/empty_data.svg";
   static const lottieAdd = "assets/lottie/add.json";
   static const lottieBg1 = "assets/lottie/bg1.json";
   static const lottieBg2 = "assets/lottie/bg2.json";

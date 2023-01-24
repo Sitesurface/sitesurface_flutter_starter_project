@@ -5,9 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:sitesurface_flutter_starter_project/flavors/config/build_flavor.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/handlers/multi_handler.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/packages/package_info_helper.dart';
-import 'package:sitesurface_flutter_starter_project/util/error/error_screen.dart';
 import 'cache/shared_preferences.dart';
 import 'flavors/config/flavor_config.dart';
+import 'routes/error_route_screen.dart';
 import 'routes/route_helper.dart';
 import 'helpers/firebase/crashlytics_helper.dart';
 import 'features/home/splash/splash_screen.dart';
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: routeHelper.getRoutes,
         initialRoute: SplashScreen.id,
         onUnknownRoute: (settings) =>
-            MaterialPageRoute(builder: (context) => const ErrorScreen()),
+            MaterialPageRoute(builder: (context) => const ErrorRouteScreen()),
       );
     });
   }
