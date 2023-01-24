@@ -10,8 +10,6 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
-import '../../../cache/shared_preferences.dart';
-
 class AuthService {
   // * Email Login
 
@@ -237,7 +235,6 @@ class AuthService {
   static Future<void> deleteAccount() async {
     try {
       await auth.currentUser?.delete();
-      Pref.instance.clear();
     } on FirebaseAuthException catch (e) {
       debugPrint(e.code);
     } catch (e) {

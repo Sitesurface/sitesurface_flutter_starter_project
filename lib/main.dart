@@ -3,6 +3,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sitesurface_flutter_starter_project/flavors/config/build_flavor.dart';
+import 'package:sitesurface_flutter_starter_project/helpers/firebase/analytics_helper.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/handlers/multi_handler.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/packages/package_info_helper.dart';
 import 'cache/shared_preferences.dart';
@@ -25,7 +26,8 @@ Future mainCommon() async {
 }
 
 class MyApp extends StatelessWidget {
-  final routeHelper = RouteHelper();
+  final _routeHelper = RouteHelper();
+  final _analyticsHelper = AnalyticsHelper();
   MyApp({Key? key}) : super(key: key);
 
   @override
@@ -38,6 +40,7 @@ class MyApp extends StatelessWidget {
         builder: BotToastInit(),
         navigatorObservers: [
           BotToastNavigatorObserver(),
+          _analyticsHelper.getAnalyticsObserver()
         ],
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
@@ -45,7 +48,7 @@ class MyApp extends StatelessWidget {
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: theme,
-        onGenerateRoute: routeHelper.getRoutes,
+        onGenerateRoute: _routeHelper.getRoutes,
         initialRoute: SplashScreen.id,
         onUnknownRoute: (settings) =>
             MaterialPageRoute(builder: (context) => const ErrorRouteScreen()),
