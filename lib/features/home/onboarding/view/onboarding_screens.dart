@@ -2,7 +2,6 @@ import 'package:concentric_transition/concentric_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
-import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
 
 import '../../../../cache/prefs_constant.dart';
 import '../../../../cache/shared_preferences.dart';

@@ -67,7 +67,6 @@ class _InternetHandlerState extends State<InternetHandler> {
 
 class _NoNetwork extends StatefulWidget {
   const _NoNetwork({Key? key}) : super(key: key);
-  static const id = "/no-network";
 
   @override
   State<_NoNetwork> createState() => _NoNetworkState();

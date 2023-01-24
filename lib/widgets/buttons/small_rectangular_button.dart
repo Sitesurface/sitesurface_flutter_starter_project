@@ -15,7 +15,6 @@ class SmallRectangleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final colorScheme = context.colorScheme;
     return TextButton(
       onPressed: () {
         onPressed();

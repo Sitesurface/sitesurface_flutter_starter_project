@@ -1,4 +1,4 @@
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/firebase/dynamic_link_helper.dart';
 
 class CommonHandler extends StatefulWidget {

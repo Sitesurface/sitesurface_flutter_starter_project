@@ -4,7 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/phone_number.dart';
-import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
+import 'package:sitesurface_flutter_starter_project/widgets/dialog/custom_dialog.dart';
 import 'package:sitesurface_flutter_starter_project/util/extentions/extensions.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
@@ -78,7 +78,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       bloc: authBloc,
                       listener: (context, state) async {
                         if (state.error) {
-                          //TODO: Handle error
+                          showCustomDialog(
+                              context: context,
+                              title: "Error",
+                              body: state.errorCode);
                           authBloc.clearError();
                         }
                         if (state.isAuthenticated) {

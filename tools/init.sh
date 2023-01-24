@@ -30,11 +30,6 @@ echo "Updating bundle id at ios/Flutter/Release-prod.xcconfig file"
 sed -i '' "s/PRODUCT_BUNDLE_IDENTIFIER=.*/PRODUCT_BUNDLE_IDENTIFIER=$new_bundle_id/" ios/Flutter/Release-prod.xcconfig
 echo "Updated bundle id at ios/Flutter/Release-prod.xcconfig file"
 
-# Update lib/flavors/config/flavor_config.dart
-echo "Updating bundle id at lib/flavors/config/flavor_config.dart file"
-sed -i '' "s/packageName = '.*\.dev';/packageName = '$new_bundle_id.dev';/" lib/flavors/config/flavor_config.dart
-sed -i '' "s/packageName = '.*[^(\.dev)]';/packageName = '$new_bundle_id';/" lib/flavors/config/flavor_config.dart
-echo "Updated bundle id at lib/flavors/config/flavor_config.dart file"
 
 echo "-----------------Bundle Id Updated -----------------"
 
@@ -65,11 +60,6 @@ echo "Updating app name at ios/Flutter/Release-prod.xcconfig file"
 sed -i '' "s/CFBundleDisplayName=.*/CFBundleDisplayName=$new_app_name/" ios/Flutter/Release-prod.xcconfig
 echo "Updated app name at ios/Flutter/Release-prod.xcconfig file"
 
-# Update lib/flavors/config/flavor_config.dart
-echo "Updating appName at lib/flavors/config/flavor_config.dart file"
-sed -i '' "s/appName = \"Dev.*\";/appName = \"Dev $new_app_name';/" lib/flavors/config/flavor_config.dart
-sed -i '' "s/appName = \".*[^Dev]\";/appName = \"$new_app_name\";/" lib/flavors/config/flavor_config.dart
-echo "Updated appName at lib/flavors/config/flavor_config.dart file"
 
 echo "-----------------Names Updated -----------------"
 

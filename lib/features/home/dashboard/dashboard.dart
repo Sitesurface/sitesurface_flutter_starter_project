@@ -21,11 +21,12 @@ class _DashboardState extends State<Dashboard> {
         actions: [
           InkWell(
               onTap: () async {
+                var navigator = Navigator.of(context);
                 if (FirebaseAuth.instance.currentUser != null) {
                   await FirebaseAuth.instance.signOut();
                 }
-                Pref.instance.pref.clear();
-                Navigator.pushNamed(context, SplashScreen.id);
+                await Pref.instance.pref.clear();
+                navigator.pushNamed(SplashScreen.id);
               },
               child: const Icon(Icons.logout)),
         ],

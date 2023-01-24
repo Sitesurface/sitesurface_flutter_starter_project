@@ -11,14 +11,15 @@ function camelCase() {
   echo "  static const $camelCase = \"$directory/$fileName\";" >> $outputFile
 }
 
-for file in assets/images/*; do
-  fileName=$(basename "$file")
-  camelCase "$fileName" "image" "assets/images"
-done
 
 for file in assets/icons/*; do
   fileName=$(basename "$file")
   camelCase "$fileName" "icon" "assets/icons"
+done
+
+for file in assets/images/*; do
+  fileName=$(basename "$file")
+  camelCase "$fileName" "image" "assets/images"
 done
 
 for file in assets/lottie/*; do
