@@ -5,7 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:path_provider/path_provider.dart';
 
-class StorageHelper {
+class FileUploadHelper {
   static Future<String?> compressAndUploadImage({
     required File fileName,
   }) async {
@@ -25,7 +25,7 @@ class StorageHelper {
     return await uploadImage(tfile);
   }
 
-  static String? _getImageExtensionFromUrl(String url) {
+  static String? _getFileExtensionFromUrl(String url) {
     RegExp regExp = RegExp(r'(?:\.([^.]+))?$');
     return regExp.firstMatch(url)?.group(1);
   }
@@ -34,7 +34,7 @@ class StorageHelper {
     var currentUser = FirebaseAuth.instance.currentUser;
     if (file == null) return null;
     String baseName =
-        "${DateTime.now().millisecondsSinceEpoch}.${_getImageExtensionFromUrl(file.path) ?? ""}";
+        "${DateTime.now().millisecondsSinceEpoch}.${_getFileExtensionFromUrl(file.path) ?? ""}";
     try {
       TaskSnapshot task = await FirebaseStorage.instance
           .ref(currentUser?.uid)

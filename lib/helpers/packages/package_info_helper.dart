@@ -5,7 +5,7 @@ class PackageInfoHelper {
 
   static PackageInfoHelper get instance => _obj;
 
-  PackageInfo? packageInfo;
+  late PackageInfo packageInfo;
 
   factory PackageInfoHelper() {
     return _obj;

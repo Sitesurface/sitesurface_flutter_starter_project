@@ -1,5 +1,6 @@
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
+import 'package:sitesurface_flutter_starter_project/helpers/packages/package_info_helper.dart';
 import 'package:sitesurface_flutter_starter_project/main.dart';
 
 import '../../flavors/config/flavor_config.dart';
@@ -13,10 +14,10 @@ class DynamicLinkHelper {
     final dynamicLinkParams = DynamicLinkParameters(
       link: link,
       uriPrefix: FlavorConfig.instance.dynamicLink!,
-      androidParameters:
-          AndroidParameters(packageName: FlavorConfig.instance.packageName!),
+      androidParameters: AndroidParameters(
+          packageName: PackageInfoHelper.instance.packageInfo.packageName),
       iosParameters: IOSParameters(
-        bundleId: FlavorConfig.instance.packageName!,
+        bundleId: PackageInfoHelper.instance.packageInfo.packageName,
         appStoreId: FlavorConfig.instance.appStoreId,
       ),
     );

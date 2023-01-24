@@ -1,6 +1,7 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sitesurface_flutter_starter_project/helpers/firebase/crashlytics_helper.dart';
 
 import '../main.dart';
 import 'config/build_flavor.dart';
@@ -14,5 +15,6 @@ void main() async {
     options: ProdDefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseAppCheck.instance.activate();
+  CrashlyticsHelper.init();
   mainCommon();
 }

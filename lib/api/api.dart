@@ -33,7 +33,7 @@ class ApiHelper {
       "Authorization": "Bearer $token",
       "Content-Type": "application/json",
       "X-Platform": Platform.operatingSystem,
-      "X-App-Version": PackageInfoHelper.instance.packageInfo?.version ?? "",
+      "X-App-Version": PackageInfoHelper.instance.packageInfo.version,
       "X-Environment": FlavorConfig.instance.buildFlavor.toString(),
       "X-Locale": LocaleHandler.getLocale().toLanguageTag(),
     };

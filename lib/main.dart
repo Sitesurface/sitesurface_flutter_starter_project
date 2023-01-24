@@ -19,20 +19,9 @@ import 'styles/theme/light_theme.dart';
 final navigatorKey = GlobalKey<NavigatorState>();
 
 Future mainCommon() async {
-  runZonedGuarded<Future<void>>(() async {
-    await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    await Pref.instance.init();
-    await PackageInfoHelper.instance.init();
-    if (FlavorConfig.instance.buildFlavor == BuildFlavor.prod) {
-      FlutterError.onError = CrashlyticsHelper.recordFlutterError;
-    }
-
-    runApp(MyApp());
-  }, (error, stack) {
-    if (FlavorConfig.instance.buildFlavor == BuildFlavor.prod) {
-      CrashlyticsHelper.recordError(error, stack);
-    }
-  });
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await Pref.instance.init();
+  await PackageInfoHelper.instance.init();
 }
 
 class MyApp extends StatelessWidget {
@@ -45,7 +34,7 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
-        title: FlavorConfig.instance.appName ?? "",
+        title: PackageInfoHelper.instance.packageInfo.appName,
         builder: BotToastInit(),
         navigatorObservers: [
           BotToastNavigatorObserver(),

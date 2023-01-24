@@ -11,11 +11,8 @@ class FlavorConfig {
   BuildFlavor? buildFlavor;
 
   String? baseUrl;
-  String? appName;
   String? appStoreId;
   String? dynamicLink;
-  String? packageName;
-  String? fcmKey;
 
   factory FlavorConfig() {
     return _obj;
@@ -33,18 +30,14 @@ class FlavorConfig {
           packageName = 'com.sitesurface.starter.dev';
           dynamicLink = '';
           appStoreId = '';
-          fcmKey = "";
         }
         break;
       case BuildFlavor.prod:
         {
           buildFlavor = BuildFlavor.dev;
           baseUrl = '';
-          appName = "Sitesurface";
-          packageName = 'com.sitesurface.starter';
           dynamicLink = '';
           appStoreId = '';
-          fcmKey = "";
         }
         break;
     }
