@@ -7,6 +7,7 @@ import 'package:sitesurface_flutter_starter_project/cache/prefs_constant.dart';
 import 'package:sitesurface_flutter_starter_project/cache/shared_preferences.dart';
 import 'package:sitesurface_flutter_starter_project/constants/assets/asset_constants.dart';
 import 'package:sitesurface_flutter_starter_project/helpers/packages/package_info_helper.dart';
+import 'package:sitesurface_flutter_starter_project/main.dart';
 import 'package:sitesurface_flutter_starter_project/widgets/screens/permission_widget.dart';
 
 class VersionHandler extends StatefulWidget {
@@ -72,17 +73,13 @@ class _VersionHandlerState extends State<VersionHandler> {
   }
 
   Future<void> checkVersion() async {
-    var navigator = Navigator.of(context);
     var updateType = await getUpdateType();
     switch (updateType) {
       case _UpdateType.none:
         break;
       case _UpdateType.minor:
-        navigator.push(MaterialPageRoute(
-            builder: (context) => _UpdateScreen(updateType: updateType)));
-        break;
       case _UpdateType.major:
-        navigator.push(MaterialPageRoute(
+        Navigator.of(navigatorKey.currentState!.context).push(MaterialPageRoute(
             builder: (context) => _UpdateScreen(updateType: updateType)));
         break;
     }
@@ -100,6 +97,23 @@ class _UpdateScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PermissionWidget(image: AssetConstants.lottieUpdateAvailable);
+    return PermissionWidget(
+      image: AssetConstants.lottieUpdateAvailable,
+      title: updateType == _UpdateType.major
+          ? "An Exciting Update for You"
+          : "A Quick Fix for You",
+      subtitle: updateType == _UpdateType.major
+          ? "We've added some amazing new features and made improvements for better performance. Update now!"
+          : "We've squashed a few bugs and made some minor improvements. Update now for a better experience!",
+      primaryButtonLabel: "Update",
+      secondaryButtonLabel: updateType == _UpdateType.major ? null : "Later",
+      onPrimaryButtonTapped: () {},
+      onsecondaryButtonTapped: updateType == _UpdateType.major
+          ? null
+          : () {
+              Navigator.of(navigatorKey.currentState!.context).maybePop();
+            },
+      allowBack: updateType == _UpdateType.minor,
+    );
   }
 }

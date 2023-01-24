@@ -13,6 +13,7 @@ class AssetConstants {
   static const lottieBg3 = "assets/lottie/bg3.json";
   static const lottieLocation = "assets/lottie/location.json";
   static const lottieLogin = "assets/lottie/login.json";
+  static const lottieMaintenance = "assets/lottie/maintenance.json";
   static const lottieOnboarding1 = "assets/lottie/onboarding1.json";
   static const lottieOnboarding2 = "assets/lottie/onboarding2.json";
   static const lottieOnboarding3 = "assets/lottie/onboarding3.json";

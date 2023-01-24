@@ -13,6 +13,9 @@ class PermissionWidget extends StatelessWidget {
   final void Function()? onPrimaryButtonTapped;
   final String? secondaryButtonLabel;
   final void Function()? onsecondaryButtonTapped;
+  final bool allowBack;
+  final TextStyle? titleStyle;
+  final TextStyle? subTitleStyle;
 
   PermissionWidget(
       {super.key,
@@ -24,7 +27,10 @@ class PermissionWidget extends StatelessWidget {
       this.primaryButtonLabel,
       this.onPrimaryButtonTapped,
       this.secondaryButtonLabel,
-      this.onsecondaryButtonTapped}) {
+      this.onsecondaryButtonTapped,
+      this.allowBack = true,
+      this.titleStyle,
+      this.subTitleStyle}) {
     if (primaryButton == null) {
       assert(primaryButtonLabel != null && onPrimaryButtonTapped != null);
     }
@@ -34,47 +40,66 @@ class PermissionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var textTheme = context.textTheme;
     var colorScheme = context.colorScheme;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        AssetHelper(image: image),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (title != null)
-              Text(
-                title ?? "",
-                style: textTheme.bodyLarge,
+    return WillPopScope(
+      onWillPop: () async {
+        return allowBack;
+      },
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 18),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              AssetHelper(
+                image: image,
+                height: MediaQuery.of(context).size.height * 0.2,
+                width: MediaQuery.of(context).size.width * 0.8,
               ),
-            if (subtitle != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 15),
-                child: Text(
-                  subtitle ?? "",
-                  style: textTheme.bodyMedium,
-                ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (title != null)
+                    Text(
+                      title ?? "",
+                      style: titleStyle ??
+                          textTheme.titleLarge
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                  if (subtitle != null)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Text(
+                        subtitle ?? "",
+                        style: subTitleStyle ?? textTheme.bodyMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                ],
               ),
-          ],
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  primaryButton ??
+                      RoundedButton(
+                          label: primaryButtonLabel ?? "",
+                          onPressed: onPrimaryButtonTapped),
+                  secondaryButton ??
+                      TextButton(
+                        onPressed: onsecondaryButtonTapped,
+                        child: Text(
+                          secondaryButtonLabel ?? "",
+                          style: textTheme.bodyMedium?.copyWith(
+                              color: colorScheme.secondary,
+                              decoration: TextDecoration.underline),
+                        ),
+                      )
+                ],
+              ),
+            ],
+          ),
         ),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            primaryButton ??
-                RoundedButton(
-                    label: primaryButtonLabel ?? "",
-                    onPressed: onPrimaryButtonTapped),
-            secondaryButton ??
-                TextButton(
-                  onPressed: onsecondaryButtonTapped,
-                  child: Text(
-                    secondaryButtonLabel ?? "",
-                    style: textTheme.bodyMedium
-                        ?.copyWith(color: colorScheme.secondary),
-                  ),
-                )
-          ],
-        ),
-      ],
+      ),
     );
   }
 }
