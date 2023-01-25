@@ -20,6 +20,7 @@ Future mainCommon() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await Pref.instance.init();
   await PackageInfoHelper.instance.init();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
