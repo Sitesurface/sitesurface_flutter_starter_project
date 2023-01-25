@@ -50,7 +50,13 @@
 ### Do native configuration for  
 #### Google_sign_in
     https://pub.dev/packages/google_sign_in
-    
+#### Facebook Sign in
+    https://facebook.meedu.app/docs/5.x.x/intro
+#### Image Picker
+    https://pub.dev/packages/image_picker
+#### Geolocator
+    https://pub.dev/packages/geolocator
+#### 
 
     
 
