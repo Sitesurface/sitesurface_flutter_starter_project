@@ -3,6 +3,14 @@
 
 # Getting Started
 
+
+### Scripts Available
+1. init.sh - Renames the bundle id and App name to required places
+2. flutterfire_config.sh - Configures the firebase project vy appropriate bundle id and project
+3. gen_freezed.sh - Generates freezed documents
+4. genassets.sh - Generated all assets in asset_constants.dart as static variables.
+5. gen_icons.sh - Generated app icon and splash screen icon
+
 ### App icon and Splash Icons
     Change the app_logo in the assets/icons/app_logo.png
     run the script in tools/gen-icons.sh to generate app_icon and splash icons.
@@ -11,7 +19,7 @@
     Generate asset constants file by running script in tools/gen-assets.sh
 
 ### App Name and application id
-    //TODO : Add script 
+    Run init.sh - (Works in mac only for now)
 #### Android
     Change app name and application id from android/app/build.gradle
 
@@ -56,7 +64,7 @@
     https://pub.dev/packages/image_picker
 #### Geolocator
     https://pub.dev/packages/geolocator
-#### 
+
 
     
 
