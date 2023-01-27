@@ -4,6 +4,8 @@ echo "Reading values from config.yaml file"
 new_bundle_id=$(grep bundle_id config.yaml | awk '{print $2}')
 new_app_name=$(grep app_name config.yaml | awk '{print $2}')
 
+fvm flutter pub run change_app_package_name:main $new_bundle_id
+
 echo "-----------------Updating Bundle Id -----------------"
 # Update android/app/build.gradle file
 echo "Updating bundle id at android/app/build.gradle file"

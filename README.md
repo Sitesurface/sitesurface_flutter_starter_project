@@ -65,6 +65,9 @@
 #### Geolocator
     https://pub.dev/packages/geolocator
 
+#### iOS Setup for notifications
+    
+
 
     
 
