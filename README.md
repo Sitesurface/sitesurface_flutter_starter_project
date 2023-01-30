@@ -48,11 +48,6 @@
 ### Change TextTheme Fonts
     change your textTheme font by changing the fontstyle in lib/util/styles/theme/themes/text_theme.dart
 
-###  Multi - Handlers
-    1. Internet Handler
-    2. Theme Handler
-    3. Locale Handler
-    4. Notification Handler
 
 
 ### Do native configuration for  
@@ -60,12 +55,14 @@
     https://pub.dev/packages/google_sign_in
 #### Facebook Sign in
     https://facebook.meedu.app/docs/5.x.x/intro
-#### Image Picker
-    https://pub.dev/packages/image_picker
-#### Geolocator
-    https://pub.dev/packages/geolocator
 
-#### iOS Setup for notifications
+#### Notifications
+#### Firebase Dynamic Links
+    https://pub.dev/packages/firebase_dynamic_links
+
+
+
+
     
 
 
