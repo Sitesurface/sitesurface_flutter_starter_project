@@ -62,7 +62,9 @@
 
 
 
-
+Roadmap => 
+1. Generate Keystore file automatically
+2. Sign debug build using release keys so that we wont need to add sha keys of every system
     
 
 
