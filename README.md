@@ -67,6 +67,7 @@ Roadmap =>
 2. Sign debug build using release keys so that we wont need to add sha keys of every system
 3. Ignore freezed files
 4. Remove firebase Dependency for implementing login
+5. Separate auth class
 
     
 
