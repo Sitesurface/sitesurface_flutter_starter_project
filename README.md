@@ -68,6 +68,7 @@ Roadmap =>
 3. Ignore freezed files
 4. Remove firebase Dependency for implementing login
 5. Separate auth class
+6. Adjust flutter_fire_config.sh for different flavor project
 
     
 
