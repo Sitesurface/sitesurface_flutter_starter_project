@@ -3,5 +3,5 @@
 
 PRODUCT_BUNDLE_IDENTIFIER=com.sitesurface.starter
 CFBundleDisplayName=Sitesurface
-FLUTTER_TARGET=/Users/san/Development/Projects/flutter/sitesurface/sitesurface_flutter_starter_project/lib/flavors/prod.dart
+FLUTTER_TARGET=$FLUTTER_APPLICATION_PATHlib/flavors/prod.dart
 
