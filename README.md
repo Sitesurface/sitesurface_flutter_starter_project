@@ -69,6 +69,8 @@ Roadmap =>
 4. Remove firebase Dependency for implementing login
 5. Separate auth class
 6. Adjust flutter_fire_config.sh for different flavor project
+7. Implement go_router
+8. Issue in locale and theme handler
 
     
 
