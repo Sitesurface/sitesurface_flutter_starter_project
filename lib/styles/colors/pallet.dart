@@ -16,9 +16,11 @@ extension Pallet on ColorScheme {
       900: primary.withOpacity(0.9),
     },
   );
-  static const Color primary = Color(0xff8C3EFF);
-  static const Color secondary = Color.fromARGB(255, 150, 138, 90);
+  static const Color primary = Color(0xff05837F);
+  static const Color secondary = Color(0xffF07965);
   static const whiteBackground = Color(0xfff9f9f9);
+
+  static const linkColor = Colors.blue;
 
   static Color? blackBackground = Colors.grey[850];
 
